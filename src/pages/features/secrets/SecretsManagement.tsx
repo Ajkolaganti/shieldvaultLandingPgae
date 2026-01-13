@@ -1,7 +1,7 @@
 import FeaturePageTemplate from '../../../components/FeaturePageTemplate'
 import { 
-  Key, Lock, RefreshCw, Cloud, GitBranch, Shield,
-  Search, Zap, CheckCircle, AlertTriangle
+  Key, Lock, RefreshCw, Cloud, Shield,
+  Search, Zap, CheckCircle
 } from 'lucide-react'
 
 const SecretsManagementPage = () => {
@@ -148,19 +148,23 @@ const SecretsManagementPage = () => {
       metrics={[
         {
           value: "12,847",
-          label: "Secrets managed"
+          label: "Secrets managed",
+          color: "text-gray-400"
         },
         {
           value: "98%",
-          label: "Rotation success rate"
+          label: "Rotation success rate",
+          color: "text-gray-400"
         },
         {
           value: "99%",
-          label: "Hardcoded secrets eliminated"
+          label: "Hardcoded secrets eliminated",
+          color: "text-gray-400"
         },
         {
           value: "< 5 min",
-          label: "Discovery time"
+          label: "Discovery time",
+          color: "text-gray-400"
         }
       ]}
       

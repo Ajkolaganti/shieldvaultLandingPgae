@@ -82,7 +82,6 @@ const FeaturePageTemplate = ({
   benefit,
   keyFeatures,
   steps,
-  technicalSpecs,
   useCases,
   metrics,
   integrations,

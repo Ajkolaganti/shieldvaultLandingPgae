@@ -1,7 +1,7 @@
 import FeaturePageTemplate from '../../../components/FeaturePageTemplate'
 import { 
-  FileCheck, Shield, Award, FileText, Download, TrendingUp,
-  CheckCircle, AlertTriangle, Clock, Database
+  FileCheck, Award, FileText, Download, TrendingUp,
+  AlertTriangle, Clock, Database
 } from 'lucide-react'
 
 const CompliancePage = () => {

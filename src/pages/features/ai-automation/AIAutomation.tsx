@@ -1,7 +1,7 @@
 import FeaturePageTemplate from '../../../components/FeaturePageTemplate'
 import { 
   Brain, Zap, Bot, TrendingUp, Target, BarChart3,
-  Shield, CheckCircle, AlertTriangle, RefreshCw
+  AlertTriangle, RefreshCw
 } from 'lucide-react'
 
 const AIAutomationPage = () => {

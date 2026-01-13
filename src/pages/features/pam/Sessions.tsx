@@ -1,6 +1,6 @@
 import FeaturePageTemplate from '../../../components/FeaturePageTemplate'
 import { 
-  Video, Monitor, Clock, Play, Eye, FileText,
+  Video, Clock, FileText,
   Activity, Shield, AlertCircle, Download
 } from 'lucide-react'
 
@@ -146,19 +146,23 @@ const SessionsPage = () => {
       metrics={[
         {
           value: "96%",
-          label: "Anomaly detection accuracy"
+          label: "Anomaly detection accuracy",
+          color: "text-gray-400"
         },
         {
           value: "100%",
-          label: "Session capture rate"
+          label: "Session capture rate",
+          color: "text-gray-400"
         },
         {
           value: "< 5s",
-          label: "Real-time alert latency"
+          label: "Real-time alert latency",
+          color: "text-gray-400"
         },
         {
           value: "50MB/hr",
-          label: "Average storage per session"
+          label: "Average storage per session",
+          color: "text-gray-400"
         }
       ]}
       

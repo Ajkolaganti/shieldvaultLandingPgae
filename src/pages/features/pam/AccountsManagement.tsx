@@ -1,7 +1,7 @@
 import FeaturePageTemplate from '../../../components/FeaturePageTemplate'
 import { 
   Shield, Search, Target, RefreshCw, Database, Network,
-  CheckCircle, AlertTriangle, Users, Lock
+  CheckCircle, AlertTriangle
 } from 'lucide-react'
 
 const AccountsManagementPage = () => {
@@ -141,19 +141,23 @@ const AccountsManagementPage = () => {
       metrics={[
         {
           value: "87%",
-          label: "Reduction in manual work"
+          label: "Reduction in manual work",
+          color: "text-gray-400"
         },
         {
           value: "98%",
-          label: "Accuracy in privilege detection"
+          label: "Accuracy in privilege detection",
+          color: "text-gray-400"
         },
         {
           value: "100%",
-          label: "Infrastructure visibility"
+          label: "Infrastructure visibility",
+          color: "text-gray-400"
         },
         {
           value: "< 2 min",
-          label: "Account discovery time"
+          label: "Account discovery time",
+          color: "text-gray-400"
         }
       ]}
       

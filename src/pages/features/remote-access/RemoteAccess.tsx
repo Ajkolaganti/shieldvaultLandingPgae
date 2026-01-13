@@ -1,6 +1,6 @@
 import FeaturePageTemplate from '../../../components/FeaturePageTemplate'
 import { 
-  Monitor, Shield, Lock, Wifi, Video, Globe,
+  Monitor, Shield, Video, Globe,
   CheckCircle, AlertTriangle, Fingerprint, Clock
 } from 'lucide-react'
 

@@ -1,7 +1,7 @@
 import FeaturePageTemplate from '../../../components/FeaturePageTemplate'
 import { 
   Lock, Key, Share2, Smartphone, Globe, Shield,
-  CheckCircle, Fingerprint, Cloud, AlertTriangle
+  CheckCircle, Fingerprint, Cloud
 } from 'lucide-react'
 
 const PersonalVaultPage = () => {
