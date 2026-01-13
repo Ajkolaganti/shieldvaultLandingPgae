@@ -313,7 +313,7 @@ const LandingPage = () => {
                   <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
                   <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
                 </div>
-                <span className="text-sm text-white font-medium">Trusted by 500+ enterprises</span>
+                <span className="text-sm text-white font-medium">Built for Modern Security Teams</span>
               </div>
 
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
@@ -1300,7 +1300,7 @@ const LandingPage = () => {
                   Ready to Achieve Continuous Compliance?
                 </h3>
                 <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-                  Join hundreds of companies maintaining audit-ready state 365 days a year with Shield Vault's automated compliance platform.
+                  Maintain audit-ready state 365 days a year with Shield Vault's automated compliance platform.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button className="px-8 py-4 bg-white/10 backdrop-blur-xl text-white font-semibold rounded-lg hover:shadow-2xl hover:scale-105 transition-all border border-white/20 hover:bg-white/20">
@@ -1479,7 +1479,7 @@ const LandingPage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`text-center mb-16 transition-all duration-1000 ${testimonialsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-              Trusted by Security Teams Worldwide
+              What Security Professionals Say
             </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
