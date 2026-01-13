@@ -1546,7 +1546,7 @@ const LandingPage = () => {
             playsInline
             className="absolute inset-0 min-w-full min-h-full object-cover w-auto h-auto"
           >
-            <source src="/hero.mp4" type="video/mp4" />
+            <source src="/CTA.mp4" type="video/mp4" />
           </video>
           {/* Gradient overlay for better form visibility */}
           <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 via-purple-900/70 to-gray-900/80 z-10"></div>
