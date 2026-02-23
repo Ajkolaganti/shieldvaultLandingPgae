@@ -7,10 +7,10 @@ import {
 const AccountsManagementPage = () => {
   return (
     <FeaturePageTemplate
-      heroIcon={<Shield className="w-32 h-32 text-white" />}
+      heroIcon={<Shield className="w-32 h-32 text-blue-600" />}
       heroTitle="Accounts Management"
       heroSubtitle="Discover, manage, and secure privileged accounts across your entire infrastructure with zero manual intervention"
-      heroGradient="from-gray-900 via-gray-800 to-gray-900"
+      heroGradient="from-blue-50 via-white to-blue-50"
       heroImage="/PAM.jpeg"
       
       overview="Automatically discover, classify, and manage privileged accounts across Windows, Linux, Oracle, AWS, Azure, and GCP environments. Our AI-powered system identifies high-risk accounts, tracks usage patterns, and enforces lifecycle management with complete automation."

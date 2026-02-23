@@ -7,10 +7,10 @@ import {
 const PersonalVaultPage = () => {
   return (
     <FeaturePageTemplate
-      heroIcon={<Lock className="w-32 h-32 text-white" />}
+      heroIcon={<Lock className="w-32 h-32 text-indigo-600" />}
       heroTitle="Personal Vault"
       heroSubtitle="Enterprise-Grade Password Management for Individuals and Teams"
-      heroGradient="from-indigo-900 via-gray-900 to-gray-900"
+      heroGradient="from-indigo-50 via-white to-indigo-50"
       heroImage="/PersonalVault.jpeg"
       
       overview="Secure password manager with military-grade encryption, biometric unlock, cross-device sync, and secure sharing. Store unlimited passwords, credit cards, notes, and documents with zero-knowledge architecture. Browser extensions, mobile apps, and desktop clients for seamless access across all devices."

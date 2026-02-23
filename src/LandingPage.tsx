@@ -14,6 +14,7 @@ import {
 } from './components/TechIcons'
 import DotCard from './components/ui/moving-dot-card'
 import DemoForm from './components/ui/enterprise-demo-form'
+import FloatingNavbar from './components/FloatingNavbar'
 
 interface DropdownItem {
   title: string
@@ -139,18 +140,6 @@ const useIntersectionObserver = (ref: React.RefObject<HTMLElement>, options = {}
 }
 
 const LandingPage = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
   const heroRef = useRef<HTMLElement>(null)
   const modulesRef = useRef<HTMLElement>(null)
   const aiRef = useRef<HTMLElement>(null)
@@ -172,213 +161,38 @@ const LandingPage = () => {
   const ctaVisible = useIntersectionObserver(ctaRef)
 
   return (
-    <div className="min-h-screen bg-gray-950">
-      {/* Header */}
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? 'glass shadow-lg'
-            : 'bg-transparent'
-        }`}
-      >
-        <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 lg:h-20">
-            {/* Logo */}
-            <div className="flex items-center space-x-2">
-              <Shield className="w-8 h-8 text-gray-200" />
-              <span className="text-xl lg:text-2xl font-bold text-white">
-                Shield Vault
-              </span>
-            </div>
+    <div className="min-h-screen relative">
+      {/* Premium Background Glow Effects */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
+        <div className="absolute -top-[300px] -right-[200px] w-[800px] h-[800px] rounded-full opacity-[0.35]" style={{ background: 'radial-gradient(circle, rgba(191,219,254,0.4) 0%, transparent 70%)' }} />
+        <div className="absolute top-[30%] -left-[300px] w-[700px] h-[700px] rounded-full opacity-[0.25]" style={{ background: 'radial-gradient(circle, rgba(199,210,254,0.4) 0%, transparent 70%)' }} />
+        <div className="absolute bottom-[20%] right-[10%] w-[500px] h-[500px] rounded-full opacity-[0.2]" style={{ background: 'radial-gradient(circle, rgba(221,214,254,0.35) 0%, transparent 70%)' }} />
+      </div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-1">
-              {navigationItems.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="relative group"
-                  onMouseEnter={() => setOpenDropdown(item.title)}
-                  onMouseLeave={() => setOpenDropdown(null)}
-                >
-                  <button className="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors flex items-center space-x-1">
-                    <span>{item.title}</span>
-                    {item.dropdown && <ChevronDown className="w-4 h-4" />}
-                  </button>
-                  {item.dropdown && openDropdown === item.title && (
-                    <div className="absolute top-full left-0 mt-2 w-64 glass rounded-lg shadow-xl p-4 animate-fade-in">
-                      <h4 className="text-sm font-semibold text-white mb-2">
-                        {item.dropdown.title}
-                      </h4>
-                      <ul className="space-y-1">
-                        {item.dropdown.items.map((subItem, subIdx) => (
-                          <li key={subIdx}>
-                            {subItem.link ? (
-                              <Link
-                                to={subItem.link}
-                                className="block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/10 rounded transition-colors"
-                              >
-                                {subItem.name}
-                              </Link>
-                            ) : (
-                              <a
-                                href="#"
-                                className="block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/10 rounded transition-colors"
-                              >
-                                {subItem.name}
-                              </a>
-                            )}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="hidden lg:flex items-center space-x-4">
-              <button className="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">
-                Sign In
-              </button>
-              <button className="px-6 py-2 bg-white/10 backdrop-blur-md text-white font-medium rounded-lg hover:bg-white/20 transition-all transform hover:scale-105 border border-white/20">
-                Request Demo
-              </button>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="lg:hidden text-gray-300"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-
-          {/* Mobile Menu */}
-          {mobileMenuOpen && (
-            <div className="lg:hidden py-4 space-y-2 glass rounded-lg mt-2">
-              {navigationItems.map((item, idx) => (
-                <div key={idx} className="px-4">
-                  <button className="w-full text-left py-2 text-gray-300">
-                    {item.title}
-                  </button>
-                </div>
-              ))}
-              <div className="px-4 pt-4 space-y-2 border-t border-white/10">
-                <button className="w-full py-2 text-gray-300 text-left">Sign In</button>
-                <button className="w-full py-2 bg-white/10 backdrop-blur-md text-white font-medium rounded-lg hover:bg-white/20 transition-colors border border-white/20">
-                  Request Demo
-                </button>
-              </div>
-            </div>
-          )}
-        </nav>
-      </header>
+      {/* Floating Navigation */}
+      <FloatingNavbar navigationItems={navigationItems} />
 
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 z-10"
       >
-        {/* Background Video */}
-        <div className="absolute inset-0">
-          <video 
-            autoPlay 
-            loop 
-            muted 
-            playsInline
-            className="w-full h-full object-cover"
-          >
-            <source src="/hero.mp4" type="video/mp4" />
-          </video>
-          {/* Dark overlay for better text readability */}
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900/95 via-gray-900/90 to-gray-900/85"></div>
-          {/* Animated gradient mesh overlay */}
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-float" />
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-          </div>
-        </div>
-
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className={`grid lg:grid-cols-2 gap-16 items-center transition-all duration-1000 ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div>
-              {/* Trust Badge */}
-              <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-xl rounded-full px-4 py-2 mb-6 border border-white/20">
-                <div className="flex items-center space-x-1">
-                  <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                </div>
-                <span className="text-sm text-white font-medium">Built for Modern Security Teams</span>
-              </div>
-
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
                 Secure Your Infrastructure.{' '}
-                <span className="text-gradient">Effortlessly.</span>
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600">Effortlessly.</span>
               </h1>
-              <p className="text-xl sm:text-2xl text-gray-200 mb-4 drop-shadow-lg leading-relaxed">
+              <p className="text-xl sm:text-2xl text-gray-600 mb-4 leading-relaxed">
                 Enterprise-grade PAM, Secrets Management, and Zero-Trust Access in one unified platform.
               </p>
-              <p className="text-lg text-gray-300 mb-10 drop-shadow-lg">
+              <p className="text-lg text-gray-500 mb-10">
                 Automate 87% of security operations, reduce audit prep from weeks to days, and achieve continuous compliance with AI-powered automation.
               </p>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <button className="group relative px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:shadow-2xl hover:shadow-white/30 transition-all transform hover:scale-105 shadow-xl flex items-center justify-center space-x-2">
-                  <span>Start Free Trial</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-                <button className="px-8 py-4 border-2 border-white/40 glass text-white font-semibold rounded-lg hover:bg-white/10 transition-all flex items-center justify-center space-x-2 shadow-xl backdrop-blur-xl">
-                  <Play className="w-5 h-5" />
-                  <span>Watch Demo</span>
-                </button>
-              </div>
-
-              {/* Trust Indicators */}
-              <div className="flex flex-wrap items-center gap-6 text-sm text-gray-300 mb-10">
-                <div className="flex items-center space-x-2">
-                  <Check className="w-5 h-5 text-green-400" />
-                  <span>14-day free trial</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Check className="w-5 h-5 text-green-400" />
-                  <span>No credit card required</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Check className="w-5 h-5 text-green-400" />
-                  <span>Setup in 5 minutes</span>
-                </div>
-              </div>
-
-              {/* Key Metrics */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <DotCard 
-                  target={12800} 
-                  duration={2500} 
-                  label="Secrets Managed"
-                  suffix="+"
-                />
-                <DotCard 
-                  target={985} 
-                  duration={2500} 
-                  label="Automation Rate"
-                  suffix="%"
-                />
-                <DotCard 
-                  target={24} 
-                  duration={2500} 
-                  label="Avg Response Time"
-                  suffix="h"
-                />
-              </div>
-
               {/* Compliance Badges */}
-              <div className="mt-10 pt-8 border-t border-white/20">
+              <div className="mt-10 pt-8 border-t border-gray-200">
                 <p className="text-sm text-gray-400 mb-4">Enterprise-grade security and compliance</p>
                 <div className="flex flex-wrap items-center gap-4">
                   {[
@@ -389,9 +203,9 @@ const LandingPage = () => {
                   ].map((badge, idx) => {
                     const BadgeIcon = badge.icon
                     return (
-                      <div key={idx} className="flex items-center space-x-2 bg-white/5 backdrop-blur-xl rounded-lg px-3 py-2 border border-white/10">
-                        <BadgeIcon className="w-4 h-4 text-gray-300" />
-                        <span className="text-xs text-gray-300 font-medium">{badge.label}</span>
+                      <div key={idx} className="flex items-center space-x-2 bg-gray-50 rounded-lg px-3 py-2 border border-gray-200">
+                        <BadgeIcon className="w-4 h-4 text-gray-500" />
+                        <span className="text-xs text-gray-600 font-medium">{badge.label}</span>
                       </div>
                     )
                   })}
@@ -400,23 +214,23 @@ const LandingPage = () => {
             </div>
             <div className={`relative transition-all duration-1000 delay-300 ${heroVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
               <div className="relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition duration-500"></div>
-                <div className="relative glass rounded-2xl overflow-hidden backdrop-blur-xl shadow-2xl border border-white/20">
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition duration-500"></div>
+                <div className="relative bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100">
                   {/* Header */}
-                  <div className="bg-gradient-to-r from-gray-900/95 to-gray-800/95 px-6 py-4 border-b border-white/10">
+                  <div className="bg-gradient-to-r from-gray-50 to-white px-6 py-4 border-b border-gray-100">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg">
+                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-md">
                           <Shield className="w-6 h-6 text-white" />
                         </div>
                         <div>
-                          <h3 className="text-white font-semibold text-lg">Shield Vault</h3>
-                          <p className="text-xs text-gray-400">Live Security Overview</p>
+                          <h3 className="text-gray-900 font-semibold text-lg">Shield Vault</h3>
+                          <p className="text-xs text-gray-500">Live Security Overview</p>
                         </div>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50"></div>
-                        <span className="text-xs text-green-400 font-medium">Live</span>
+                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        <span className="text-xs text-green-600 font-medium">Live</span>
                       </div>
                     </div>
                   </div>
@@ -425,95 +239,95 @@ const LandingPage = () => {
                   <div className="p-6 space-y-4">
                     {/* Real-time Activity Feed */}
                     <div className="space-y-3">
-                      <div className="flex items-start space-x-3 bg-white/5 rounded-lg p-3 border border-green-500/20 animate-fade-in">
-                        <div className="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center flex-shrink-0 border border-green-500/30">
-                          <Check className="w-4 h-4 text-green-400" />
+                      <div className="flex items-start space-x-3 bg-green-50 rounded-lg p-3 border border-green-100 animate-fade-in">
+                        <div className="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0 border border-green-200">
+                          <Check className="w-4 h-4 text-green-600" />
                         </div>
                         <div className="flex-grow">
                           <div className="flex items-center justify-between mb-1">
-                            <span className="text-sm font-semibold text-white">Secret Rotation Complete</span>
+                            <span className="text-sm font-semibold text-gray-900">Secret Rotation Complete</span>
                             <span className="text-xs text-gray-400">2s ago</span>
                           </div>
-                          <p className="text-xs text-gray-400">AWS Production DB rotated successfully</p>
+                          <p className="text-xs text-gray-500">AWS Production DB rotated successfully</p>
                         </div>
                       </div>
 
-                      <div className="flex items-start space-x-3 bg-white/5 rounded-lg p-3 border border-blue-500/20">
-                        <div className="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0 border border-blue-500/30">
-                          <Key className="w-4 h-4 text-blue-400" />
+                      <div className="flex items-start space-x-3 bg-blue-50 rounded-lg p-3 border border-blue-100">
+                        <div className="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0 border border-blue-200">
+                          <Key className="w-4 h-4 text-blue-600" />
                         </div>
                         <div className="flex-grow">
                           <div className="flex items-center justify-between mb-1">
-                            <span className="text-sm font-semibold text-white">New Access Request</span>
+                            <span className="text-sm font-semibold text-gray-900">New Access Request</span>
                             <span className="text-xs text-gray-400">12s ago</span>
                           </div>
-                          <p className="text-xs text-gray-400">admin@company.com • Production SSH</p>
+                          <p className="text-xs text-gray-500">admin@company.com • Production SSH</p>
                         </div>
                       </div>
 
-                      <div className="flex items-start space-x-3 bg-white/5 rounded-lg p-3 border border-purple-500/20">
-                        <div className="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center flex-shrink-0 border border-purple-500/30">
-                          <Zap className="w-4 h-4 text-purple-400" />
+                      <div className="flex items-start space-x-3 bg-purple-50 rounded-lg p-3 border border-purple-100">
+                        <div className="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center flex-shrink-0 border border-purple-200">
+                          <Zap className="w-4 h-4 text-purple-600" />
                         </div>
                         <div className="flex-grow">
                           <div className="flex items-center justify-between mb-1">
-                            <span className="text-sm font-semibold text-white">AI Policy Optimized</span>
+                            <span className="text-sm font-semibold text-gray-900">AI Policy Optimized</span>
                             <span className="text-xs text-gray-400">1m ago</span>
                           </div>
-                          <p className="text-xs text-gray-400">3 policies updated for better security</p>
+                          <p className="text-xs text-gray-500">3 policies updated for better security</p>
                         </div>
                       </div>
                     </div>
 
                     {/* Key Metrics Grid */}
-                    <div className="grid grid-cols-3 gap-3 pt-4 border-t border-white/10">
+                    <div className="grid grid-cols-3 gap-3 pt-4 border-t border-gray-100">
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-white mb-1">156</div>
-                        <div className="text-xs text-gray-400">Active Sessions</div>
+                        <div className="text-2xl font-bold text-gray-900 mb-1">156</div>
+                        <div className="text-xs text-gray-500">Active Sessions</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-green-400 mb-1">98.5%</div>
-                        <div className="text-xs text-gray-400">Success Rate</div>
+                        <div className="text-2xl font-bold text-green-600 mb-1">98.5%</div>
+                        <div className="text-xs text-gray-500">Success Rate</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-blue-400 mb-1">12.8K</div>
-                        <div className="text-xs text-gray-400">Secrets</div>
+                        <div className="text-2xl font-bold text-blue-600 mb-1">12.8K</div>
+                        <div className="text-xs text-gray-500">Secrets</div>
                       </div>
                     </div>
 
                     {/* Security Status */}
-                    <div className="bg-gradient-to-r from-green-500/10 to-blue-500/10 rounded-lg p-4 border border-green-500/20">
+                    <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-4 border border-green-100">
                       <div className="flex items-center justify-between mb-3">
-                        <span className="text-sm font-semibold text-white">Security Posture</span>
-                        <span className="text-2xl font-bold text-green-400">98%</span>
+                        <span className="text-sm font-semibold text-gray-900">Security Posture</span>
+                        <span className="text-2xl font-bold text-green-600">98%</span>
                       </div>
-                      <div className="w-full bg-gray-800/50 rounded-full h-2 overflow-hidden">
+                      <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
                         <div className="bg-gradient-to-r from-green-500 to-blue-500 h-full rounded-full" style={{ width: '98%' }}></div>
                       </div>
-                      <div className="flex items-center justify-between mt-2 text-xs text-gray-400">
+                      <div className="flex items-center justify-between mt-2 text-xs text-gray-500">
                         <span>Excellent</span>
                         <span className="flex items-center space-x-1">
-                          <TrendingUp className="w-3 h-3 text-green-400" />
-                          <span className="text-green-400">+2% this week</span>
+                          <TrendingUp className="w-3 h-3 text-green-500" />
+                          <span className="text-green-600">+2% this week</span>
                         </span>
                       </div>
                     </div>
 
                     {/* Quick Stats */}
                     <div className="grid grid-cols-2 gap-3">
-                      <div className="bg-white/5 rounded-lg p-3 border border-white/10">
+                      <div className="bg-gray-50 rounded-lg p-3 border border-gray-100">
                         <div className="flex items-center space-x-2 mb-2">
-                          <AlertTriangle className="w-4 h-4 text-yellow-400" />
-                          <span className="text-xs text-gray-400">Threats Blocked</span>
+                          <AlertTriangle className="w-4 h-4 text-yellow-500" />
+                          <span className="text-xs text-gray-500">Threats Blocked</span>
                         </div>
-                        <div className="text-xl font-bold text-white">2,847</div>
+                        <div className="text-xl font-bold text-gray-900">2,847</div>
                       </div>
-                      <div className="bg-white/5 rounded-lg p-3 border border-white/10">
+                      <div className="bg-gray-50 rounded-lg p-3 border border-gray-100">
                         <div className="flex items-center space-x-2 mb-2">
-                          <Clock className="w-4 h-4 text-blue-400" />
-                          <span className="text-xs text-gray-400">Avg Response</span>
+                          <Clock className="w-4 h-4 text-blue-500" />
+                          <span className="text-xs text-gray-500">Avg Response</span>
                         </div>
-                        <div className="text-xl font-bold text-white">2.4s</div>
+                        <div className="text-xl font-bold text-gray-900">2.4s</div>
                       </div>
                     </div>
                   </div>
@@ -527,11 +341,11 @@ const LandingPage = () => {
       {/* Section 1: Core Modules */}
       <section
         ref={modulesRef}
-        className="py-24 bg-gray-900"
+        className="py-24 relative z-10"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`text-center mb-16 transition-all duration-1000 ${modulesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
               Complete Security Platform in One Solution
             </h2>
           </div>
@@ -592,8 +406,8 @@ const LandingPage = () => {
                   className={`group relative ${modulesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                   style={{ transitionDelay: `${idx * 100}ms` }}
                 >
-                  <div className={`absolute -inset-0.5 bg-white/10 rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-500`}></div>
-                  <div className="relative glass rounded-xl overflow-hidden hover:scale-105 transition-all duration-300 cursor-pointer shadow-xl border border-white/10">
+                  <div className="absolute -inset-0.5 bg-blue-400/5 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                  <div className="relative bg-white rounded-xl overflow-hidden hover:scale-[1.02] transition-all duration-300 cursor-pointer shadow-sm hover:shadow-lg border border-gray-100/80">
                     {module.image && (
                       <div className="relative h-48 overflow-hidden">
                         <img 
@@ -602,7 +416,7 @@ const LandingPage = () => {
                           className="w-full h-full object-cover"
                           loading="lazy"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
                         <div className="absolute top-3 right-3">
                           <div className={`px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-white shadow-lg border border-white/20`}>
                             {module.stats}
@@ -616,29 +430,29 @@ const LandingPage = () => {
                     <div className="p-6">
                       {!module.image && (
                         <div className="flex items-start justify-between mb-4">
-                      <div className={`w-16 h-16 rounded-xl bg-white/10 flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 border border-white/20`}>
-                        <Icon className="w-8 h-8 text-gray-200" />
+                      <div className="w-16 h-16 rounded-xl bg-blue-50 flex items-center justify-center shadow-sm transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 border border-blue-100">
+                        <Icon className="w-8 h-8 text-blue-600" />
                       </div>
-                      <div className={`px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-white shadow-lg border border-white/20`}>
+                      <div className="px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 shadow-sm border border-blue-100">
                         {module.stats}
                       </div>
                         </div>
                       )}
-                      <h3 className="text-xl font-bold text-white mb-4 transition-all">{module.title}</h3>
+                      <h3 className="text-xl font-bold text-gray-900 mb-4 transition-all">{module.title}</h3>
                       <ul className="space-y-3 mb-4">
                         {module.features.map((feature, fIdx) => (
-                        <li key={fIdx} className="text-sm text-gray-300 flex items-start space-x-2 group-hover:text-gray-200 transition-colors">
+                        <li key={fIdx} className="text-sm text-gray-600 flex items-start space-x-2 group-hover:text-gray-800 transition-colors">
                           <div className="mt-0.5">
-                            <Check className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                            <Check className="w-4 h-4 text-blue-500 flex-shrink-0" />
                           </div>
                             <span className="leading-tight">{feature}</span>
                           </li>
                         ))}
                       </ul>
-                      <div className="mt-4 pt-4 border-t border-white/10">
+                      <div className="mt-4 pt-4 border-t border-gray-100">
                       <div className="flex items-center justify-between text-xs">
-                        <span className="text-gray-400">Learn more</span>
-                        <span className="text-gray-300 group-hover:translate-x-1 transition-transform inline-block">→</span>
+                        <span className="text-gray-500">Learn more</span>
+                        <span className="text-blue-600 group-hover:translate-x-1 transition-transform inline-block">→</span>
                       </div>
                       </div>
                     </div>
@@ -653,120 +467,106 @@ const LandingPage = () => {
       {/* Section 2: AI & Automation */}
       <section
         ref={aiRef}
-        className="py-24 relative overflow-hidden"
+        className="py-24 relative overflow-hidden z-10"
       >
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <img 
-            src="/AiAutomations.jpeg" 
-            alt="AI Automations Background" 
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-          {/* Dark overlay for better text readability */}
-          <div className="absolute inset-0 bg-gradient-to-br from-indigo-950/95 via-purple-950/90 to-indigo-950/95"></div>
-        </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className={`text-center mb-16 transition-all duration-1000 ${aiVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
               AI-Powered Security Automation
             </h2>
-            <p className="text-xl text-gray-300">Reduce manual operations by 87%</p>
+            <p className="text-xl text-gray-500">Reduce manual operations by 87%</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             <div className={`group relative transition-all duration-1000 ${aiVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <div className="absolute -inset-0.5 bg-white/10 rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
-              <div className="relative glass rounded-xl p-6 shadow-xl border border-white/10">
-                <div className="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mb-4 shadow-lg border border-white/20 group-hover:scale-110 transition-transform">
-                  <Zap className="w-8 h-8 text-gray-200" />
+              <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-lg hover:border-gray-200 transition-all">
+                <div className="w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center mb-4 shadow-sm border border-blue-100 group-hover:scale-110 transition-transform">
+                  <Zap className="w-8 h-8 text-blue-600" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">Agentic AI Agents</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Agentic AI Agents</h3>
                 <ul className="space-y-4">
-                  <li className="bg-white/5 rounded-lg p-3 border border-white/10 hover:border-white/30 transition-colors">
-                    <span className="font-semibold text-white block mb-1">Policy Optimization Agent</span>
+                  <li className="bg-gray-50 rounded-lg p-3 border border-gray-100 hover:border-gray-200 transition-colors">
+                    <span className="font-semibold text-gray-900 block mb-1">Policy Optimization Agent</span>
                     <div className="flex items-center justify-between">
-                      <div className="text-xs text-gray-400">Task completion</div>
-                      <div className="text-sm font-bold text-gray-200">65%</div>
+                      <div className="text-xs text-gray-500">Task completion</div>
+                      <div className="text-sm font-bold text-blue-600">65%</div>
                     </div>
                   </li>
-                  <li className="bg-white/5 rounded-lg p-3 border border-white/10 hover:border-white/30 transition-colors">
-                    <span className="font-semibold text-white block mb-1">Compliance Auditor Agent</span>
+                  <li className="bg-gray-50 rounded-lg p-3 border border-gray-100 hover:border-gray-200 transition-colors">
+                    <span className="font-semibold text-gray-900 block mb-1">Compliance Auditor Agent</span>
                     <div className="flex items-center justify-between">
-                      <div className="text-xs text-gray-400">Report generation</div>
-                      <div className="text-sm font-bold text-gray-200">100%</div>
+                      <div className="text-xs text-gray-500">Report generation</div>
+                      <div className="text-sm font-bold text-blue-600">100%</div>
                     </div>
                   </li>
-                  <li className="bg-white/5 rounded-lg p-3 border border-white/10 hover:border-white/30 transition-colors">
-                    <span className="font-semibold text-white block mb-1">Anomaly Detection Agent</span>
+                  <li className="bg-gray-50 rounded-lg p-3 border border-gray-100 hover:border-gray-200 transition-colors">
+                    <span className="font-semibold text-gray-900 block mb-1">Anomaly Detection Agent</span>
                     <div className="flex items-center justify-between">
-                      <div className="text-xs text-gray-400">Accounts monitored</div>
-                      <div className="text-sm font-bold text-gray-200">50+</div>
+                      <div className="text-xs text-gray-500">Accounts monitored</div>
+                      <div className="text-sm font-bold text-blue-600">50+</div>
                     </div>
                   </li>
                 </ul>
               </div>
             </div>
             <div className={`group relative transition-all duration-1000 delay-200 ${aiVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <div className="absolute -inset-0.5 bg-white/10 rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
-              <div className="relative glass rounded-xl p-6 shadow-xl border border-white/10">
-                <div className="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mb-4 shadow-lg border border-white/20 group-hover:scale-110 transition-transform">
-                  <BarChart3 className="w-8 h-8 text-gray-200" />
+              <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-lg hover:border-gray-200 transition-all">
+                <div className="w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center mb-4 shadow-sm border border-blue-100 group-hover:scale-110 transition-transform">
+                  <BarChart3 className="w-8 h-8 text-blue-600" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">Automation Rules</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Automation Rules</h3>
                 <ul className="space-y-4">
-                  <li className="bg-white/5 rounded-lg p-3 border border-white/10 hover:border-white/30 transition-colors">
-                    <span className="font-semibold text-white block mb-1">Auto-revoke risky sessions</span>
+                  <li className="bg-gray-50 rounded-lg p-3 border border-gray-100 hover:border-gray-200 transition-colors">
+                    <span className="font-semibold text-gray-900 block mb-1">Auto-revoke risky sessions</span>
                     <div className="flex items-center justify-between">
-                      <div className="text-xs text-gray-400">Success rate</div>
-                      <div className="text-sm font-bold text-gray-200">98.5%</div>
+                      <div className="text-xs text-gray-500">Success rate</div>
+                      <div className="text-sm font-bold text-blue-600">98.5%</div>
                     </div>
                   </li>
-                  <li className="bg-white/5 rounded-lg p-3 border border-white/10 hover:border-white/30 transition-colors">
-                    <span className="font-semibold text-white block mb-1">Credential rotation</span>
+                  <li className="bg-gray-50 rounded-lg p-3 border border-gray-100 hover:border-gray-200 transition-colors">
+                    <span className="font-semibold text-gray-900 block mb-1">Credential rotation</span>
                     <div className="flex items-center justify-between">
-                      <div className="text-xs text-gray-400">Success rate</div>
-                      <div className="text-sm font-bold text-gray-200">99.2%</div>
+                      <div className="text-xs text-gray-500">Success rate</div>
+                      <div className="text-sm font-bold text-blue-600">99.2%</div>
                     </div>
                   </li>
-                  <li className="bg-white/5 rounded-lg p-3 border border-white/10 hover:border-white/30 transition-colors">
-                    <span className="font-semibold text-white block mb-1">Approval escalation</span>
+                  <li className="bg-gray-50 rounded-lg p-3 border border-gray-100 hover:border-gray-200 transition-colors">
+                    <span className="font-semibold text-gray-900 block mb-1">Approval escalation</span>
                     <div className="flex items-center justify-between">
-                      <div className="text-xs text-gray-400">Success rate</div>
-                      <div className="text-sm font-bold text-gray-200">96.8%</div>
+                      <div className="text-xs text-gray-500">Success rate</div>
+                      <div className="text-sm font-bold text-blue-600">96.8%</div>
                     </div>
                   </li>
                 </ul>
               </div>
             </div>
             <div className={`group relative transition-all duration-1000 delay-400 ${aiVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <div className="absolute -inset-0.5 bg-white/10 rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
-              <div className="relative glass rounded-xl p-6 shadow-xl border border-white/10">
-                <div className="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mb-4 shadow-lg border border-white/20 group-hover:scale-110 transition-transform">
-                  <TrendingUp className="w-8 h-8 text-gray-200" />
+              <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-lg hover:border-gray-200 transition-all">
+                <div className="w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center mb-4 shadow-sm border border-blue-100 group-hover:scale-110 transition-transform">
+                  <TrendingUp className="w-8 h-8 text-blue-600" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">AI Insights</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">AI Insights</h3>
                 <ul className="space-y-4">
-                  <li className="bg-white/5 rounded-lg p-3 border border-white/10 hover:border-white/30 transition-colors">
-                    <span className="font-semibold text-white block mb-1">Risk detection</span>
+                  <li className="bg-gray-50 rounded-lg p-3 border border-gray-100 hover:border-gray-200 transition-colors">
+                    <span className="font-semibold text-gray-900 block mb-1">Risk detection</span>
                     <div className="flex items-center justify-between">
-                      <div className="text-xs text-gray-400">Confidence</div>
-                      <div className="text-sm font-bold text-gray-200">96%</div>
+                      <div className="text-xs text-gray-500">Confidence</div>
+                      <div className="text-sm font-bold text-blue-600">96%</div>
                     </div>
                   </li>
-                  <li className="bg-white/5 rounded-lg p-3 border border-white/10 hover:border-white/30 transition-colors">
-                    <span className="font-semibold text-white block">Optimization recommendations</span>
+                  <li className="bg-gray-50 rounded-lg p-3 border border-gray-100 hover:border-gray-200 transition-colors">
+                    <span className="font-semibold text-gray-900 block">Optimization recommendations</span>
                   </li>
-                  <li className="bg-white/5 rounded-lg p-3 border border-white/10 hover:border-white/30 transition-colors">
-                    <span className="font-semibold text-white block">Compliance gap analysis</span>
+                  <li className="bg-gray-50 rounded-lg p-3 border border-gray-100 hover:border-gray-200 transition-colors">
+                    <span className="font-semibold text-gray-900 block">Compliance gap analysis</span>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
-          <div className={`glass rounded-xl p-6 text-center transition-all duration-1000 delay-600 border border-white/10 ${aiVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="text-lg text-gray-300">
-              <span className="font-semibold text-white">156+ rule executions/month</span> |{' '}
-              <span className="font-semibold text-white">6-7 hours saved</span> per team member
+          <div className={`bg-white rounded-xl p-6 text-center transition-all duration-1000 delay-600 border border-gray-100 shadow-sm ${aiVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div className="text-lg text-gray-500">
+              <span className="font-semibold text-gray-900">156+ rule executions/month</span> |{' '}
+              <span className="font-semibold text-gray-900">6-7 hours saved</span> per team member
             </div>
           </div>
         </div>
@@ -775,14 +575,14 @@ const LandingPage = () => {
       {/* Section 3: Threat Analytics */}
       <section
         ref={threatRef}
-        className="py-24 relative overflow-hidden bg-gray-900"
+        className="py-24 relative overflow-hidden z-10"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className={`text-center mb-16 transition-all duration-1000 ${threatVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
               Advanced Threat Detection & Response
             </h2>
-            <p className="text-xl text-gray-300">
+            <p className="text-xl text-gray-500">
               AI-powered security monitoring that stops threats before they become breaches
             </p>
           </div>
@@ -793,12 +593,12 @@ const LandingPage = () => {
               {/* Image Side */}
               <div className="order-2 lg:order-1">
                 <div className="relative group">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-cyan-500/30 rounded-2xl blur-xl opacity-40 group-hover:opacity-60 transition duration-500"></div>
+                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-cyan-500/10 rounded-2xl blur-xl opacity-40 group-hover:opacity-60 transition duration-500"></div>
                   <div className="relative">
                     <img 
                       src="/advthreat.jpeg" 
                       alt="Advanced Threat Detection" 
-                      className="w-full h-auto rounded-2xl shadow-2xl border border-white/20"
+                      className="w-full h-auto rounded-2xl shadow-lg border border-gray-200"
                     />
                   </div>
                 </div>
@@ -806,8 +606,8 @@ const LandingPage = () => {
 
               {/* Details Side */}
               <div className="order-1 lg:order-2">
-                <h3 className="text-3xl font-bold text-white mb-6">Real-Time Threat Intelligence</h3>
-                <p className="text-lg text-gray-300 mb-8 leading-relaxed">
+                <h3 className="text-3xl font-bold text-gray-900 mb-6">Real-Time Threat Intelligence</h3>
+                <p className="text-lg text-gray-500 mb-8 leading-relaxed">
                   Our AI-powered threat detection engine analyzes millions of data points in real-time to identify and neutralize security threats before they impact your business.
                 </p>
                 <div className="space-y-4">
@@ -841,14 +641,14 @@ const LandingPage = () => {
                       return colors[color] || colors.blue
                     }
                     return (
-                      <div key={idx} className="glass rounded-lg p-5 border border-white/20 hover:border-white/30 transition-colors">
+                      <div key={idx} className="bg-white rounded-lg p-5 shadow-sm border border-gray-100 hover:border-gray-200 hover:shadow-md transition-all">
                         <div className="flex items-start space-x-4">
                           <div className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 border ${getColorClasses(item.color)}`}>
                             <Icon className="w-6 h-6" />
                           </div>
                           <div>
-                            <h4 className="text-lg font-semibold text-white mb-1">{item.title}</h4>
-                            <p className="text-sm text-gray-300">{item.description}</p>
+                            <h4 className="text-lg font-semibold text-gray-900 mb-1">{item.title}</h4>
+                            <p className="text-sm text-gray-500">{item.description}</p>
                           </div>
                         </div>
                       </div>
@@ -894,16 +694,16 @@ const LandingPage = () => {
                   className={`group relative transition-all duration-1000 ${threatVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                   style={{ transitionDelay: `${idx * 150}ms` }}
                 >
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
-                  <div className="relative glass rounded-xl p-6 shadow-xl border border-white/10 hover:scale-105 transition-transform h-full">
-                    <div className="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-4 shadow-lg border border-white/20 group-hover:rotate-3 transition-transform">
-                      <Icon className="w-7 h-7 text-gray-200" />
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                  <div className="relative bg-white rounded-xl p-6 shadow-sm hover:shadow-lg border border-gray-100 hover:scale-[1.02] transition-all h-full">
+                    <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-4 shadow-sm border border-blue-100 group-hover:rotate-3 transition-transform">
+                      <Icon className="w-7 h-7 text-blue-600" />
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-4">{feature.title}</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">{feature.title}</h3>
                     <ul className="space-y-3">
                       {feature.items.map((item, itemIdx) => (
-                        <li key={itemIdx} className="text-sm text-gray-300 flex items-start space-x-2 bg-white/5 rounded-lg p-2 border border-white/10 hover:border-white/30 transition-colors">
-                          <Check className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
+                        <li key={itemIdx} className="text-sm text-gray-600 flex items-start space-x-2 bg-gray-50 rounded-lg p-2 border border-gray-100 hover:border-gray-200 transition-colors">
+                          <Check className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -923,44 +723,44 @@ const LandingPage = () => {
                   <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
                   <span className="text-sm text-blue-400 font-semibold">Live Monitoring</span>
                 </div>
-                <h3 className="text-3xl font-bold text-white mb-4">Real-time Threat Intelligence</h3>
-                <p className="text-lg text-gray-300 mb-8 leading-relaxed">
+                <h3 className="text-3xl font-bold text-gray-900 mb-4">Real-time Threat Intelligence</h3>
+                <p className="text-lg text-gray-500 mb-8 leading-relaxed">
                   Monitor security events across your entire infrastructure in real-time. Our global threat intelligence network processes millions of events per second to keep you protected.
                 </p>
 
                 {/* Stats Grid */}
                 <div className="grid grid-cols-2 gap-4 mb-8">
-                  <div className="glass rounded-lg p-4 border border-white/10 hover:border-blue-400/30 transition-colors">
+                  <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-100 hover:border-blue-200 transition-colors">
                     <div className="flex items-center space-x-2 mb-2">
-                      <Shield className="w-5 h-5 text-blue-400" />
-                      <span className="text-xs text-gray-400">Blocked Threats</span>
+                      <Shield className="w-5 h-5 text-blue-500" />
+                      <span className="text-xs text-gray-500">Blocked Threats</span>
                     </div>
-                    <div className="text-3xl font-bold text-blue-400">2,847</div>
-                    <div className="text-xs text-gray-500 mt-1">Last 24 hours</div>
+                    <div className="text-3xl font-bold text-blue-600">2,847</div>
+                    <div className="text-xs text-gray-400 mt-1">Last 24 hours</div>
                   </div>
-                  <div className="glass rounded-lg p-4 border border-white/10 hover:border-green-400/30 transition-colors">
+                  <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-100 hover:border-green-200 transition-colors">
                     <div className="flex items-center space-x-2 mb-2">
-                      <Check className="w-5 h-5 text-green-400" />
-                      <span className="text-xs text-gray-400">Active Sessions</span>
+                      <Check className="w-5 h-5 text-green-500" />
+                      <span className="text-xs text-gray-500">Active Sessions</span>
                     </div>
-                    <div className="text-3xl font-bold text-green-400">156</div>
-                    <div className="text-xs text-gray-500 mt-1">Currently monitored</div>
+                    <div className="text-3xl font-bold text-green-600">156</div>
+                    <div className="text-xs text-gray-400 mt-1">Currently monitored</div>
                   </div>
-                  <div className="glass rounded-lg p-4 border border-white/10 hover:border-yellow-400/30 transition-colors">
+                  <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-100 hover:border-yellow-200 transition-colors">
                     <div className="flex items-center space-x-2 mb-2">
-                      <AlertTriangle className="w-5 h-5 text-yellow-400" />
-                      <span className="text-xs text-gray-400">Anomalies Detected</span>
+                      <AlertTriangle className="w-5 h-5 text-yellow-500" />
+                      <span className="text-xs text-gray-500">Anomalies Detected</span>
                     </div>
-                    <div className="text-3xl font-bold text-yellow-400">23</div>
-                    <div className="text-xs text-gray-500 mt-1">Under investigation</div>
+                    <div className="text-3xl font-bold text-yellow-600">23</div>
+                    <div className="text-xs text-gray-400 mt-1">Under investigation</div>
                   </div>
-                  <div className="glass rounded-lg p-4 border border-white/10 hover:border-white/30 transition-colors">
+                  <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-100 hover:border-gray-200 transition-colors">
                     <div className="flex items-center space-x-2 mb-2">
-                      <TrendingUp className="w-5 h-5 text-white" />
-                      <span className="text-xs text-gray-400">Risk Score</span>
+                      <TrendingUp className="w-5 h-5 text-gray-600" />
+                      <span className="text-xs text-gray-500">Risk Score</span>
                     </div>
-                    <div className="text-3xl font-bold text-white">Low</div>
-                    <div className="text-xs text-green-500 mt-1">98% secure</div>
+                    <div className="text-3xl font-bold text-gray-900">Low</div>
+                    <div className="text-xs text-green-600 mt-1">98% secure</div>
                   </div>
                 </div>
 
@@ -973,7 +773,7 @@ const LandingPage = () => {
                   ].map((item, idx) => {
                     const Icon = item.icon
                     return (
-                      <div key={idx} className="flex items-center space-x-3 text-gray-300">
+                      <div key={idx} className="flex items-center space-x-3 text-gray-600">
                         <div className={`w-8 h-8 rounded-lg bg-${item.color}-500/20 border border-${item.color}-400/30 flex items-center justify-center flex-shrink-0`}>
                           <Icon className={`w-4 h-4 text-${item.color}-400`} />
                         </div>
@@ -987,12 +787,12 @@ const LandingPage = () => {
               {/* Image Side */}
               <div className="order-1 lg:order-2">
                 <div className="relative group">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-cyan-500/30 rounded-2xl blur-xl opacity-40 group-hover:opacity-60 transition duration-500"></div>
+                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-cyan-500/10 rounded-2xl blur-xl opacity-40 group-hover:opacity-60 transition duration-500"></div>
                   <div className="relative">
                     <img 
                       src="/realtime.jpeg" 
                       alt="Real-time Threat Map" 
-                      className="w-full h-auto rounded-2xl shadow-2xl border border-white/20"
+                      className="w-full h-auto rounded-2xl shadow-lg border border-gray-200"
                     />
                   </div>
                 </div>
@@ -1005,49 +805,35 @@ const LandingPage = () => {
       {/* Section 4: Compliance & Audit */}
       <section
         ref={complianceRef}
-        className="py-32 relative overflow-hidden"
+        className="py-32 relative overflow-hidden z-10"
       >
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <img 
-            src="/Compliance.jpeg" 
-            alt="Compliance Background" 
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-          {/* Dark overlay for better text readability */}
-          <div className="absolute inset-0 bg-gray-950/95"></div>
-          {/* Animated gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-gray-900/20"></div>
-        </div>
-        
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Header Section */}
           <div className={`text-center mb-20 transition-all duration-1000 ${complianceVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="inline-block mb-4">
-              <div className="px-6 py-2 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 shadow-lg">
-                <span className="text-sm font-semibold text-white">🏆 Industry-Leading Compliance</span>
+              <div className="px-6 py-2 bg-blue-50 rounded-full border border-blue-100 shadow-sm">
+                <span className="text-sm font-semibold text-blue-700">🏆 Industry-Leading Compliance</span>
               </div>
             </div>
-            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 drop-shadow-2xl">
+            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
               Enterprise-Grade Compliance
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-              Reduce audit prep from <span className="text-white font-bold">4 weeks to 2 days</span> with automated compliance reporting, 
+            <p className="text-xl text-gray-500 max-w-3xl mx-auto mb-8">
+              Reduce audit prep from <span className="text-gray-900 font-bold">4 weeks to 2 days</span> with automated compliance reporting, 
               continuous monitoring, and 100% evidence completeness across all major frameworks.
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-sm">
-              <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-xl px-4 py-2 rounded-lg border border-white/20">
-                <Clock className="w-4 h-4 text-green-400" />
-                <span className="text-white font-semibold">365 Days Audit-Ready</span>
+              <div className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg border border-gray-200 shadow-sm">
+                <Clock className="w-4 h-4 text-green-500" />
+                <span className="text-gray-700 font-semibold">365 Days Audit-Ready</span>
               </div>
-              <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-xl px-4 py-2 rounded-lg border border-white/20">
-                <TrendingUp className="w-4 h-4 text-blue-400" />
-                <span className="text-white font-semibold">98% Compliance Score</span>
+              <div className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg border border-gray-200 shadow-sm">
+                <TrendingUp className="w-4 h-4 text-blue-500" />
+                <span className="text-gray-700 font-semibold">98% Compliance Score</span>
               </div>
-              <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-xl px-4 py-2 rounded-lg border border-white/20">
-                <Award className="w-4 h-4 text-amber-400" />
-                <span className="text-white font-semibold">$150K+ Savings per Audit</span>
+              <div className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg border border-gray-200 shadow-sm">
+                <Award className="w-4 h-4 text-amber-500" />
+                <span className="text-gray-700 font-semibold">$150K+ Savings per Audit</span>
               </div>
             </div>
           </div>
@@ -1058,12 +844,12 @@ const LandingPage = () => {
               {/* Image Side */}
               <div className="order-2 md:order-1">
                 <div className="relative group">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-amber-500/30 rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition duration-500"></div>
+                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-amber-500/10 rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition duration-500"></div>
                   <div className="relative">
                     <img 
                       src="/engrcomp.jpeg" 
                       alt="Enterprise-Grade Compliance Visualization" 
-                      className="w-full h-auto rounded-2xl shadow-2xl border border-white/20"
+                      className="w-full h-auto rounded-2xl shadow-lg border border-gray-200"
                     />
                   </div>
                 </div>
@@ -1071,42 +857,42 @@ const LandingPage = () => {
               
               {/* Details Side */}
               <div className="order-1 md:order-2">
-                <h3 className="text-3xl font-bold text-white mb-6">Automated Compliance at Scale</h3>
-                <p className="text-lg text-gray-300 mb-8 leading-relaxed">
+                <h3 className="text-3xl font-bold text-gray-900 mb-6">Automated Compliance at Scale</h3>
+                <p className="text-lg text-gray-500 mb-8 leading-relaxed">
                   Transform your compliance workflow with intelligent automation that continuously monitors, collects evidence, 
                   and generates audit-ready reports across all major frameworks.
                 </p>
                 <div className="space-y-4">
-                  <div className="glass rounded-lg p-5 border border-white/20 hover:border-blue-400/30 transition-colors">
+                  <div className="bg-white rounded-lg p-5 border border-gray-100 hover:border-blue-200 hover:shadow-md transition-all shadow-sm">
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0 border border-blue-400/30">
-                        <Database className="w-6 h-6 text-blue-400" />
+                      <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0 border border-blue-100">
+                        <Database className="w-6 h-6 text-blue-600" />
                       </div>
                       <div>
-                        <h4 className="text-lg font-semibold text-white mb-1">Continuous Evidence Collection</h4>
-                        <p className="text-sm text-gray-300">Automatically aggregate compliance evidence from all security systems with 100% completeness</p>
+                        <h4 className="text-lg font-semibold text-gray-900 mb-1">Continuous Evidence Collection</h4>
+                        <p className="text-sm text-gray-500">Automatically aggregate compliance evidence from all security systems with 100% completeness</p>
                       </div>
                     </div>
                   </div>
-                  <div className="glass rounded-lg p-5 border border-white/20 hover:border-purple-400/30 transition-colors">
+                  <div className="bg-white rounded-lg p-5 border border-gray-100 hover:border-purple-200 hover:shadow-md transition-all shadow-sm">
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center flex-shrink-0 border border-purple-400/30">
-                        <TrendingUp className="w-6 h-6 text-purple-400" />
+                      <div className="w-12 h-12 bg-purple-50 rounded-lg flex items-center justify-center flex-shrink-0 border border-purple-100">
+                        <TrendingUp className="w-6 h-6 text-purple-600" />
                       </div>
                       <div>
-                        <h4 className="text-lg font-semibold text-white mb-1">Real-Time Compliance Dashboard</h4>
-                        <p className="text-sm text-gray-300">Live monitoring with 98% average compliance score across SOC 2, ISO 27001, and more</p>
+                        <h4 className="text-lg font-semibold text-gray-900 mb-1">Real-Time Compliance Dashboard</h4>
+                        <p className="text-sm text-gray-500">Live monitoring with 98% average compliance score across SOC 2, ISO 27001, and more</p>
                       </div>
                     </div>
                   </div>
-                  <div className="glass rounded-lg p-5 border border-white/20 hover:border-amber-400/30 transition-colors">
+                  <div className="bg-white rounded-lg p-5 border border-gray-100 hover:border-amber-200 hover:shadow-md transition-all shadow-sm">
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-amber-500/20 rounded-lg flex items-center justify-center flex-shrink-0 border border-amber-400/30">
-                        <FileText className="w-6 h-6 text-amber-400" />
+                      <div className="w-12 h-12 bg-amber-50 rounded-lg flex items-center justify-center flex-shrink-0 border border-amber-100">
+                        <FileText className="w-6 h-6 text-amber-600" />
                       </div>
                       <div>
-                        <h4 className="text-lg font-semibold text-white mb-1">One-Click Report Generation</h4>
-                        <p className="text-sm text-gray-300">Generate comprehensive audit reports in under 1 minute with complete evidence trails</p>
+                        <h4 className="text-lg font-semibold text-gray-900 mb-1">One-Click Report Generation</h4>
+                        <p className="text-sm text-gray-500">Generate comprehensive audit reports in under 1 minute with complete evidence trails</p>
                       </div>
                     </div>
                   </div>
@@ -1117,7 +903,7 @@ const LandingPage = () => {
 
           {/* Compliance Frameworks Grid */}
           <div className="mb-20">
-            <h3 className={`text-2xl font-bold text-white text-center mb-10 transition-all duration-1000 delay-200 ${complianceVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <h3 className={`text-2xl font-bold text-gray-900 text-center mb-10 transition-all duration-1000 delay-200 ${complianceVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               Supported Compliance Frameworks
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
@@ -1136,15 +922,14 @@ const LandingPage = () => {
                     className={`group relative transition-all duration-1000 ${complianceVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
                     style={{ transitionDelay: `${idx * 100}ms` }}
                   >
-                    <div className="absolute -inset-0.5 bg-white/20 rounded-xl blur opacity-20 group-hover:opacity-50 transition duration-500"></div>
-                    <div className="relative glass rounded-xl p-6 text-center border border-white/10 hover:border-white/30 hover:scale-110 transition-all shadow-2xl">
-                      <div className="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mx-auto mb-3 shadow-lg border border-white/20 group-hover:scale-110 transition-transform">
-                        <Icon className="w-8 h-8 text-white" />
+                    <div className="bg-white rounded-xl p-6 text-center border border-gray-100 hover:border-gray-200 hover:shadow-lg hover:scale-110 transition-all shadow-sm">
+                      <div className="w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-3 shadow-sm border border-blue-100 group-hover:scale-110 transition-transform">
+                        <Icon className="w-8 h-8 text-blue-600" />
                       </div>
-                      <div className="text-sm font-bold text-white">{cert.name}</div>
+                      <div className="text-sm font-bold text-gray-900">{cert.name}</div>
                       <div className="mt-2 flex items-center justify-center space-x-1">
-                        <Check className="w-4 h-4 text-green-400" />
-                        <span className="text-xs text-gray-300">Certified</span>
+                        <Check className="w-4 h-4 text-green-500" />
+                        <span className="text-xs text-gray-500">Certified</span>
                       </div>
                     </div>
                   </div>
@@ -1155,7 +940,7 @@ const LandingPage = () => {
 
           {/* Key Compliance Features */}
           <div className={`mb-20 transition-all duration-1000 delay-400 ${complianceVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h3 className="text-2xl font-bold text-white text-center mb-10">
+            <h3 className="text-2xl font-bold text-gray-900 text-center mb-10">
               Comprehensive Compliance Capabilities
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -1201,18 +986,17 @@ const LandingPage = () => {
                   key={idx}
                   className="group relative"
                 >
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500/30 to-purple-500/30 rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
-                  <div className="relative glass rounded-xl p-6 border border-white/10 hover:border-white/30 transition-all h-full">
+                  <div className="bg-white rounded-xl p-6 border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all h-full shadow-sm">
                     <div className="flex items-start justify-between mb-4">
-                      <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center shadow-lg border border-white/20">
-                        <feature.icon className="w-6 h-6 text-blue-400" />
+                      <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center shadow-sm border border-blue-100">
+                        <feature.icon className="w-6 h-6 text-blue-600" />
                       </div>
-                      <div className="px-3 py-1 bg-blue-500/20 backdrop-blur-xl rounded-full border border-blue-400/30">
-                        <span className="text-xs font-bold text-blue-300">{feature.stat}</span>
+                      <div className="px-3 py-1 bg-blue-50 rounded-full border border-blue-100">
+                        <span className="text-xs font-bold text-blue-600">{feature.stat}</span>
                       </div>
                     </div>
-                    <h4 className="text-lg font-bold text-white mb-2">{feature.title}</h4>
-                    <p className="text-sm text-gray-300 leading-relaxed">{feature.description}</p>
+                    <h4 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h4>
+                    <p className="text-sm text-gray-500 leading-relaxed">{feature.description}</p>
                   </div>
                 </div>
               ))}
@@ -1221,40 +1005,37 @@ const LandingPage = () => {
 
           {/* Stats Section */}
           <div className={`mb-20 transition-all duration-1000 delay-600 ${complianceVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-amber-600/20 rounded-3xl blur-2xl"></div>
-              <div className="relative glass rounded-3xl p-8 border border-white/20">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                  {[
-                    { value: '4 weeks → 2 days', label: 'Audit Prep Reduction' },
-                    { value: '100%', label: 'Evidence Completeness' },
-                    { value: '8+', label: 'Frameworks Supported' },
-                    { value: '$150K+', label: 'Savings per Audit' }
-                  ].map((stat, idx) => (
-                    <div key={idx} className="text-center">
-                      <div className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-2">
-                        {stat.value}
-                      </div>
-                      <div className="text-sm text-gray-300">{stat.label}</div>
+            <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                {[
+                  { value: '4 weeks → 2 days', label: 'Audit Prep Reduction' },
+                  { value: '100%', label: 'Evidence Completeness' },
+                  { value: '8+', label: 'Frameworks Supported' },
+                  { value: '$150K+', label: 'Savings per Audit' }
+                ].map((stat, idx) => (
+                  <div key={idx} className="text-center">
+                    <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-2">
+                      {stat.value}
                     </div>
-                  ))}
-                </div>
+                    <div className="text-sm text-gray-500">{stat.label}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
 
           {/* Architecture Diagram */}
           <div className={`mb-20 transition-all duration-1000 delay-800 ${complianceVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h3 className="text-2xl font-bold text-white text-center mb-10">
+            <h3 className="text-2xl font-bold text-gray-900 text-center mb-10">
               Shield Vault Security Architecture
             </h3>
             <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-amber-500/30 rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition duration-500"></div>
-              <div className="relative glass rounded-3xl p-8 border border-white/10 overflow-hidden">
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-amber-500/10 rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition duration-500"></div>
+              <div className="relative bg-white rounded-3xl p-8 border border-gray-100 shadow-sm overflow-hidden">
                 <img 
                   src="/SV_diagram.jpeg" 
                   alt="Shield Vault Architecture Diagram" 
-                  className="w-full h-auto rounded-xl shadow-2xl"
+                  className="w-full h-auto rounded-xl shadow-lg"
                 />
               </div>
             </div>
@@ -1262,7 +1043,7 @@ const LandingPage = () => {
 
           {/* Security & Audit Features */}
           <div className={`mb-20 transition-all duration-1000 delay-1000 ${complianceVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h3 className="text-2xl font-bold text-white text-center mb-10">
+            <h3 className="text-2xl font-bold text-gray-900 text-center mb-10">
               Security & Audit Features
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -1282,10 +1063,10 @@ const LandingPage = () => {
               ].map((feature, idx) => (
                 <div 
                   key={idx} 
-                  className="glass rounded-lg p-4 flex items-start space-x-3 hover:bg-white/10 transition-all border border-white/10 hover:border-white/30"
+                  className="bg-white rounded-lg p-4 flex items-start space-x-3 hover:shadow-md transition-all border border-gray-100 hover:border-gray-200 shadow-sm"
                 >
-                  <FileCheck className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-gray-300">{feature}</span>
+                  <FileCheck className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-gray-600">{feature}</span>
                 </div>
               ))}
             </div>
@@ -1293,29 +1074,26 @@ const LandingPage = () => {
 
           {/* CTA Banner */}
           <div className={`transition-all duration-1000 delay-1200 ${complianceVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-amber-600 rounded-2xl blur opacity-30"></div>
-              <div className="relative glass rounded-2xl p-12 text-center border border-white/20">
-                <h3 className="text-3xl font-bold text-white mb-4">
-                  Ready to Achieve Continuous Compliance?
-                </h3>
-                <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-                  Maintain audit-ready state 365 days a year with Shield Vault's automated compliance platform.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button className="px-8 py-4 bg-white/10 backdrop-blur-xl text-white font-semibold rounded-lg hover:shadow-2xl hover:scale-105 transition-all border border-white/20 hover:bg-white/20">
-                    <span className="flex items-center justify-center space-x-2">
-                      <span>Start Free Trial</span>
-                      <ArrowRight className="w-5 h-5" />
-                    </span>
-                  </button>
-                  <button className="px-8 py-4 border-2 border-white/30 glass text-white font-semibold rounded-lg hover:bg-white/10 transition-all">
-                    <span className="flex items-center justify-center space-x-2">
-                      <FileText className="w-5 h-5" />
-                      <span>Download Compliance Guide</span>
-                    </span>
-                  </button>
-                </div>
+            <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 rounded-2xl p-12 text-center shadow-lg">
+              <h3 className="text-3xl font-bold text-white mb-4">
+                Ready to Achieve Continuous Compliance?
+              </h3>
+              <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
+                Maintain audit-ready state 365 days a year with Shield Vault's automated compliance platform.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button className="px-8 py-4 bg-white text-blue-700 font-semibold rounded-lg hover:shadow-xl hover:scale-105 transition-all">
+                  <span className="flex items-center justify-center space-x-2">
+                    <span>Start Free Trial</span>
+                    <ArrowRight className="w-5 h-5" />
+                  </span>
+                </button>
+                <button className="px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-lg hover:bg-white/10 transition-all">
+                  <span className="flex items-center justify-center space-x-2">
+                    <FileText className="w-5 h-5" />
+                    <span>Download Compliance Guide</span>
+                  </span>
+                </button>
               </div>
             </div>
           </div>
@@ -1325,22 +1103,11 @@ const LandingPage = () => {
       {/* Section 5: Integrations Ecosystem */}
       <section
         ref={integrationsRef}
-        className="py-24 relative overflow-hidden"
+        className="py-24 relative overflow-hidden z-10"
       >
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <img 
-            src="/Integrations.jpeg" 
-            alt="Integrations Background" 
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-gray-900/95"></div>
-        </div>
-        
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className={`text-center mb-16 transition-all duration-1000 ${integrationsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 drop-shadow-2xl">
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
               Connect Your Entire Tech Stack
             </h2>
           </div>
@@ -1392,8 +1159,8 @@ const LandingPage = () => {
                   style={{ transitionDelay: `${catIdx * 200}ms` }}
                 >
                   <div className="flex items-center justify-center space-x-3 mb-6">
-                    <Globe className="w-8 h-8 text-gray-400" />
-                    <h3 className="text-2xl font-bold text-white">{category.title}</h3>
+                    <Globe className="w-8 h-8 text-blue-600" />
+                    <h3 className="text-2xl font-bold text-gray-900">{category.title}</h3>
                   </div>
                   
                   {/* Scrolling container */}
@@ -1410,12 +1177,11 @@ const LandingPage = () => {
                             className="group relative flex-shrink-0"
                             style={{ width: '180px' }}
                           >
-                            <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-lg blur opacity-15 group-hover:opacity-35 transition duration-300"></div>
-                            <div className="relative glass rounded-lg p-4 text-center hover:scale-105 transition-transform cursor-pointer border border-white/10 group-hover:border-cyan-500/30 shadow-lg h-full">
+                            <div className="bg-white rounded-lg p-4 text-center hover:scale-105 transition-transform cursor-pointer border border-gray-100 hover:border-gray-200 shadow-sm hover:shadow-lg h-full">
                               <div className="w-12 h-12 mx-auto mb-2 flex items-center justify-center">
-                                <ItemIcon className="w-10 h-10 text-gray-300 group-hover:text-white transition-colors" />
+                                <ItemIcon className="w-10 h-10 text-gray-600 group-hover:text-gray-900 transition-colors" />
                               </div>
-                              <div className="text-sm font-semibold text-gray-300 group-hover:text-white transition-colors">{item.name}</div>
+                              <div className="text-sm font-semibold text-gray-600 group-hover:text-gray-900 transition-colors">{item.name}</div>
                             </div>
                           </div>
                         )
@@ -1432,11 +1198,11 @@ const LandingPage = () => {
       {/* Section 6: Technical Metrics */}
       <section
         ref={metricsRef}
-        className="py-24 bg-gray-950"
+        className="py-24 relative z-10"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`text-center mb-16 transition-all duration-1000 ${metricsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
               Built for Scale & Performance
             </h2>
           </div>
@@ -1456,13 +1222,13 @@ const LandingPage = () => {
                   className={`group relative transition-all duration-1000 ${metricsVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
                   style={{ transitionDelay: `${idx * 100}ms` }}
                 >
-                  <div className={`absolute -inset-0.5 bg-white/10 rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-500`}></div>
-                  <div className="relative glass rounded-xl p-6 text-center shadow-xl border border-white/10 hover:scale-105 transition-transform backdrop-blur-xl">
-                    <div className={`w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center mx-auto mb-4 shadow-lg border border-white/20`}>
-                      <Icon className="w-6 h-6 text-gray-200" />
+                  <div className="absolute -inset-0.5 bg-blue-400/5 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                  <div className="relative bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-lg border border-gray-100 hover:scale-[1.02] transition-all">
+                    <div className="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center mx-auto mb-4 shadow-sm border border-blue-100">
+                      <Icon className="w-6 h-6 text-blue-600" />
                     </div>
-                    <div className="text-4xl font-bold text-white mb-2">{metric.value}</div>
-                    <div className="text-sm text-gray-400">{metric.label}</div>
+                    <div className="text-4xl font-bold text-gray-900 mb-2">{metric.value}</div>
+                    <div className="text-sm text-gray-500">{metric.label}</div>
                   </div>
                 </div>
               )
@@ -1474,11 +1240,11 @@ const LandingPage = () => {
       {/* Section 7: Customer Testimonials */}
       <section
         ref={testimonialsRef}
-        className="py-24 bg-gray-900"
+        className="py-24 relative z-10"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`text-center mb-16 transition-all duration-1000 ${testimonialsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
               What Security Professionals Say
             </h2>
           </div>
@@ -1506,21 +1272,21 @@ const LandingPage = () => {
                   className={`group relative transition-all duration-1000 ${testimonialsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                   style={{ transitionDelay: `${idx * 150}ms` }}
                 >
-                  <div className={`absolute -inset-0.5 bg-white/10 rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-500`}></div>
-                  <div className={`relative glass rounded-xl p-6 shadow-xl border border-white/10 hover:scale-105 transition-transform`}>
+                  <div className="absolute -inset-0.5 bg-blue-400/5 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                  <div className="relative bg-white rounded-xl p-6 shadow-sm hover:shadow-lg border border-gray-100 hover:scale-[1.02] transition-all">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (
                         <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
                       ))}
                     </div>
-                    <p className="text-gray-300 mb-6 italic text-lg leading-relaxed">"{testimonial.quote}"</p>
+                    <p className="text-gray-600 mb-6 italic text-lg leading-relaxed">"{testimonial.quote}"</p>
                     <div className="flex items-center space-x-3">
-                      <div className={`w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shadow-lg border border-white/20`}>
-                        <Users className="w-6 h-6 text-gray-200" />
+                      <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center shadow-sm border border-blue-100">
+                        <Users className="w-6 h-6 text-blue-600" />
                       </div>
                       <div>
-                        <div className="font-semibold text-white">{testimonial.author}</div>
-                        <div className="text-sm text-gray-400">{testimonial.role}</div>
+                        <div className="font-semibold text-gray-900">{testimonial.author}</div>
+                        <div className="text-sm text-gray-500">{testimonial.role}</div>
                       </div>
                     </div>
                   </div>
@@ -1534,24 +1300,8 @@ const LandingPage = () => {
       {/* Section 8: CTA Section */}
       <section
         ref={ctaRef}
-        className="py-24 relative overflow-hidden min-h-screen flex items-center justify-center"
+        className="py-24 relative overflow-hidden min-h-screen flex items-center justify-center z-10"
       >
-        {/* Background Video */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden">
-          <div className="absolute inset-0 bg-black/50 z-10" />
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 min-w-full min-h-full object-cover w-auto h-auto"
-          >
-            <source src="/CTA.mp4" type="video/mp4" />
-          </video>
-          {/* Gradient overlay for better form visibility */}
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 via-purple-900/70 to-gray-900/80 z-10"></div>
-        </div>
-
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
           <div className={`max-w-2xl mx-auto transition-all duration-1000 ${ctaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <DemoForm 
@@ -1565,25 +1315,15 @@ const LandingPage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="relative border-t border-gray-800 py-12 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <img 
-            src="/Footerbg.jpeg" 
-            alt="Footer Background" 
-            className="w-full h-full object-cover"
-          />
-          {/* Dark overlay for better text readability */}
-          <div className="absolute inset-0 bg-gray-950/90"></div>
-        </div>
+      <footer className="relative border-t border-gray-200 py-12 z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
             <div>
-              <h4 className="text-white font-semibold mb-4">Product</h4>
+              <h4 className="text-gray-900 font-semibold mb-4">Product</h4>
               <ul className="space-y-2">
                 {['Privilege Access Management', 'Secrets Management', 'Service Account Vaulting', 'Personal Vault', 'Remote Secure Access', 'Integrations'].map((item, idx) => (
                   <li key={idx}>
-                    <a href="#" className="text-sm text-gray-400 hover:text-white transition-colors">
+                    <a href="#" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
                       {item}
                     </a>
                   </li>
@@ -1591,11 +1331,11 @@ const LandingPage = () => {
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-semibold mb-4">Features</h4>
+              <h4 className="text-gray-900 font-semibold mb-4">Features</h4>
               <ul className="space-y-2">
                 {['AI Automation', 'Threat Analytics', 'Compliance', 'Integrations'].map((item, idx) => (
                   <li key={idx}>
-                    <a href="#" className="text-sm text-gray-400 hover:text-white transition-colors">
+                    <a href="#" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
                       {item}
                     </a>
                   </li>
@@ -1603,11 +1343,11 @@ const LandingPage = () => {
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-semibold mb-4">Resources</h4>
+              <h4 className="text-gray-900 font-semibold mb-4">Resources</h4>
               <ul className="space-y-2">
                 {['Documentation', 'API Reference', 'Blog', 'Support'].map((item, idx) => (
                   <li key={idx}>
-                    <a href="#" className="text-sm text-gray-400 hover:text-white transition-colors">
+                    <a href="#" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
                       {item}
                     </a>
                   </li>
@@ -1615,11 +1355,11 @@ const LandingPage = () => {
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-semibold mb-4">Company</h4>
+              <h4 className="text-gray-900 font-semibold mb-4">Company</h4>
               <ul className="space-y-2">
                 {['About', 'Careers', 'Contact', 'Privacy Policy'].map((item, idx) => (
                   <li key={idx}>
-                    <a href="#" className="text-sm text-gray-400 hover:text-white transition-colors">
+                    <a href="#" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
                       {item}
                     </a>
                   </li>
@@ -1627,7 +1367,7 @@ const LandingPage = () => {
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 pt-8 text-center">
+          <div className="border-t border-gray-200 pt-8 text-center">
             <p className="text-sm text-gray-400">
               © 2026 Shield Vault. All rights reserved.
             </p>

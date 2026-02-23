@@ -7,10 +7,10 @@ import {
 const SessionsPage = () => {
   return (
     <FeaturePageTemplate
-      heroIcon={<Video className="w-32 h-32 text-white" />}
+      heroIcon={<Video className="w-32 h-32 text-blue-600" />}
       heroTitle="Session Recording & Monitoring"
       heroSubtitle="Record, monitor, and analyze every privileged session in real-time with AI-powered threat detection"
-      heroGradient="from-gray-900 via-gray-800 to-gray-900"
+      heroGradient="from-blue-50 via-white to-blue-50"
       heroImage="/PAM.jpeg"
       
       overview="Capture complete video recordings of all privileged sessions with keystroke logging, clipboard monitoring, and file transfer tracking. Our AI analyzes session behavior in real-time to detect anomalies and potential security threats before they escalate."

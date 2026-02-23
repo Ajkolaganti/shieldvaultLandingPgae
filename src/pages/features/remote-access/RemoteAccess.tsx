@@ -7,10 +7,10 @@ import {
 const RemoteAccessPage = () => {
   return (
     <FeaturePageTemplate
-      heroIcon={<Monitor className="w-32 h-32 text-white" />}
+      heroIcon={<Monitor className="w-32 h-32 text-green-600" />}
       heroTitle="Remote Secure Access"
       heroSubtitle="Zero-Trust Remote Connections with Complete Session Control"
-      heroGradient="from-green-900 via-gray-900 to-gray-900"
+      heroGradient="from-green-50 via-white to-green-50"
       heroImage="/RemoteAccess.jpeg"
       
       overview="Enable secure remote access to servers, databases, and applications without VPN complexity. Zero-trust architecture with MFA, session recording, real-time monitoring, and automatic session termination on risk detection. Support for SSH, RDP, HTTP/S protocols with clientless browser-based access."

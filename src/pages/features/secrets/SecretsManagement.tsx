@@ -7,10 +7,10 @@ import {
 const SecretsManagementPage = () => {
   return (
     <FeaturePageTemplate
-      heroIcon={<Key className="w-32 h-32 text-white" />}
+      heroIcon={<Key className="w-32 h-32 text-blue-600" />}
       heroTitle="Secrets Management"
       heroSubtitle="Centralized control plane for discovering, rotating, and managing secrets across cloud, CI/CD, and infrastructure"
-      heroGradient="from-gray-900 via-gray-800 to-gray-900"
+      heroGradient="from-blue-50 via-white to-blue-50"
       heroImage="/SecretManagement.jpeg"
       
       overview="Automatically discover secrets across AWS, Azure, GCP, and CI/CD pipelines. Enforce rotation policies, track secret usage, and eliminate hardcoded credentials with our centralized secrets control plane managing 12,847+ secrets with 98% rotation success rate."
