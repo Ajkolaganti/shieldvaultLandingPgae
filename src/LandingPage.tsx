@@ -210,7 +210,7 @@ const LandingPage = () => {
                 </div>
               </div>
             </div>
-            <div className={`relative transition-all duration-1000 delay-300 ${heroVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`} style={{ overflow: 'visible' }}>
+            <div className={`relative transition-all duration-1000 delay-300 ${heroVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
 
               {/* ── Morphing background orbs ── */}
               <div style={{ position: 'absolute', top: '10%', left: '5%', width: 320, height: 320, borderRadius: '50%', background: 'radial-gradient(circle, rgba(99,102,241,0.16) 0%, transparent 68%)', filter: 'blur(50px)', animation: 'hero-v2-orb-pulse 5.5s ease-in-out infinite', pointerEvents: 'none', zIndex: 0 }} />
@@ -218,9 +218,7 @@ const LandingPage = () => {
 
               {/* ── Orbital rings (perspective wrapper) ── */}
               <div style={{ position: 'absolute', inset: '-10%', perspective: '900px', pointerEvents: 'none', zIndex: 2 }}>
-                {/* outer ring */}
                 <div style={{ position: 'absolute', inset: 0, border: '1.5px solid transparent', borderTopColor: 'rgba(99,102,241,0.55)', borderRightColor: 'rgba(99,102,241,0.22)', borderBottomColor: 'rgba(99,102,241,0.06)', borderLeftColor: 'rgba(99,102,241,0.3)', borderRadius: '50%', animation: 'hero-v2-spin-cw 26s linear infinite' }} />
-                {/* inner ring */}
                 <div style={{ position: 'absolute', inset: '14%', border: '1px dashed rgba(59,130,246,0.28)', borderRadius: '50%', animation: 'hero-v2-spin-ccw 17s linear infinite' }} />
               </div>
 
@@ -242,22 +240,38 @@ const LandingPage = () => {
                 <div style={{ position: 'absolute', top: 16, right: '9%', width: 22, height: 22, borderTop: '2px solid rgba(99,102,241,0.85)', borderRight: '2px solid rgba(99,102,241,0.85)', borderRadius: '0 3px 0 0', pointerEvents: 'none', zIndex: 3, animation: 'hero-v2-bracket-glow 3s ease-in-out infinite 0.5s' }} />
                 <div style={{ position: 'absolute', bottom: 16, left: '1%', width: 22, height: 22, borderBottom: '2px solid rgba(99,102,241,0.85)', borderLeft: '2px solid rgba(99,102,241,0.85)', borderRadius: '0 0 0 3px', pointerEvents: 'none', zIndex: 3, animation: 'hero-v2-bracket-glow 3s ease-in-out infinite 1s' }} />
                 <div style={{ position: 'absolute', bottom: 16, right: '9%', width: 22, height: 22, borderBottom: '2px solid rgba(99,102,241,0.85)', borderRight: '2px solid rgba(99,102,241,0.85)', borderRadius: '0 0 3px 0', pointerEvents: 'none', zIndex: 3, animation: 'hero-v2-bracket-glow 3s ease-in-out infinite 1.5s' }} />
+
+                {/* ── Floating dark stat cards — desktop only (lg+) ── */}
+                <div className="hidden lg:block" style={{ position: 'absolute', top: '10%', right: '-2%', background: 'rgba(15,23,42,0.86)', backdropFilter: 'blur(18px)', WebkitBackdropFilter: 'blur(18px)', border: '1px solid rgba(99,102,241,0.28)', borderRadius: 14, padding: '10px 16px', animation: 'hero-v2-card-float-a 5s ease-in-out infinite', zIndex: 5, pointerEvents: 'none', boxShadow: '0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.07)', minWidth: 120 }}>
+                  <div style={{ fontSize: 9, color: 'rgba(148,163,184,0.85)', marginBottom: 4, letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600 }}>Active Sessions</div>
+                  <div style={{ fontSize: 26, fontWeight: 700, lineHeight: 1, animation: 'hero-v2-num-glow 3s ease-in-out infinite', fontVariantNumeric: 'tabular-nums' }}>156</div>
+                </div>
+
+                <div className="hidden lg:block" style={{ position: 'absolute', bottom: '16%', left: '-1%', background: 'rgba(15,23,42,0.86)', backdropFilter: 'blur(18px)', WebkitBackdropFilter: 'blur(18px)', border: '1px solid rgba(59,130,246,0.24)', borderRadius: 14, padding: '10px 16px', animation: 'hero-v2-card-float-b 6.5s ease-in-out infinite', zIndex: 5, pointerEvents: 'none', boxShadow: '0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.07)', minWidth: 130 }}>
+                  <div style={{ fontSize: 9, color: 'rgba(148,163,184,0.85)', marginBottom: 4, letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600 }}>Threats Blocked</div>
+                  <div style={{ fontSize: 26, fontWeight: 700, lineHeight: 1, animation: 'hero-v2-num-glow 3.5s ease-in-out infinite 0.8s', fontVariantNumeric: 'tabular-nums' }}>2,847</div>
+                </div>
+
+                <div className="hidden lg:block" style={{ position: 'absolute', bottom: '44%', right: '-4%', background: 'rgba(15,23,42,0.86)', backdropFilter: 'blur(18px)', WebkitBackdropFilter: 'blur(18px)', border: '1px solid rgba(16,185,129,0.24)', borderRadius: 14, padding: '10px 16px', animation: 'hero-v2-card-float-a 7s ease-in-out infinite 1.4s', zIndex: 5, pointerEvents: 'none', boxShadow: '0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.07)', minWidth: 120 }}>
+                  <div style={{ fontSize: 9, color: 'rgba(148,163,184,0.85)', marginBottom: 4, letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600 }}>Security Score</div>
+                  <div style={{ fontSize: 26, fontWeight: 700, lineHeight: 1, color: '#34d399', fontVariantNumeric: 'tabular-nums' }}>98%</div>
+                </div>
               </div>
 
-              {/* ── Floating dark stat cards ── */}
-              <div style={{ position: 'absolute', top: '10%', right: '-2%', background: 'rgba(15,23,42,0.86)', backdropFilter: 'blur(18px)', WebkitBackdropFilter: 'blur(18px)', border: '1px solid rgba(99,102,241,0.28)', borderRadius: 14, padding: '10px 16px', animation: 'hero-v2-card-float-a 5s ease-in-out infinite', zIndex: 5, pointerEvents: 'none', boxShadow: '0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.07)', minWidth: 120 }}>
-                <div style={{ fontSize: 9, color: 'rgba(148,163,184,0.85)', marginBottom: 4, letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600 }}>Active Sessions</div>
-                <div style={{ fontSize: 26, fontWeight: 700, lineHeight: 1, animation: 'hero-v2-num-glow 3s ease-in-out infinite', fontVariantNumeric: 'tabular-nums' }}>156</div>
-              </div>
-
-              <div style={{ position: 'absolute', bottom: '16%', left: '-1%', background: 'rgba(15,23,42,0.86)', backdropFilter: 'blur(18px)', WebkitBackdropFilter: 'blur(18px)', border: '1px solid rgba(59,130,246,0.24)', borderRadius: 14, padding: '10px 16px', animation: 'hero-v2-card-float-b 6.5s ease-in-out infinite', zIndex: 5, pointerEvents: 'none', boxShadow: '0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.07)', minWidth: 130 }}>
-                <div style={{ fontSize: 9, color: 'rgba(148,163,184,0.85)', marginBottom: 4, letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600 }}>Threats Blocked</div>
-                <div style={{ fontSize: 26, fontWeight: 700, lineHeight: 1, animation: 'hero-v2-num-glow 3.5s ease-in-out infinite 0.8s', fontVariantNumeric: 'tabular-nums' }}>2,847</div>
-              </div>
-
-              <div style={{ position: 'absolute', bottom: '44%', right: '-4%', background: 'rgba(15,23,42,0.86)', backdropFilter: 'blur(18px)', WebkitBackdropFilter: 'blur(18px)', border: '1px solid rgba(16,185,129,0.24)', borderRadius: 14, padding: '10px 16px', animation: 'hero-v2-card-float-a 7s ease-in-out infinite 1.4s', zIndex: 5, pointerEvents: 'none', boxShadow: '0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.07)', minWidth: 120 }}>
-                <div style={{ fontSize: 9, color: 'rgba(148,163,184,0.85)', marginBottom: 4, letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600 }}>Security Score</div>
-                <div style={{ fontSize: 26, fontWeight: 700, lineHeight: 1, color: '#34d399', fontVariantNumeric: 'tabular-nums' }}>98%</div>
+              {/* ── Inline stat strip — mobile only (below image) ── */}
+              <div className="flex lg:hidden justify-center gap-3 mt-2 px-2">
+                <div style={{ flex: 1, background: 'rgba(15,23,42,0.82)', backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)', border: '1px solid rgba(99,102,241,0.25)', borderRadius: 12, padding: '8px 12px', textAlign: 'center', animation: 'hero-v2-card-float-a 5s ease-in-out infinite' }}>
+                  <div style={{ fontSize: 8, color: 'rgba(148,163,184,0.8)', letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600, marginBottom: 3 }}>Sessions</div>
+                  <div style={{ fontSize: 20, fontWeight: 700, lineHeight: 1, color: '#e2e8f0', fontVariantNumeric: 'tabular-nums' }}>156</div>
+                </div>
+                <div style={{ flex: 1, background: 'rgba(15,23,42,0.82)', backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)', border: '1px solid rgba(59,130,246,0.22)', borderRadius: 12, padding: '8px 12px', textAlign: 'center', animation: 'hero-v2-card-float-b 6.5s ease-in-out infinite' }}>
+                  <div style={{ fontSize: 8, color: 'rgba(148,163,184,0.8)', letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600, marginBottom: 3 }}>Threats</div>
+                  <div style={{ fontSize: 20, fontWeight: 700, lineHeight: 1, color: '#e2e8f0', fontVariantNumeric: 'tabular-nums' }}>2,847</div>
+                </div>
+                <div style={{ flex: 1, background: 'rgba(15,23,42,0.82)', backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)', border: '1px solid rgba(16,185,129,0.22)', borderRadius: 12, padding: '8px 12px', textAlign: 'center', animation: 'hero-v2-card-float-a 7s ease-in-out infinite 1.4s' }}>
+                  <div style={{ fontSize: 8, color: 'rgba(148,163,184,0.8)', letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600, marginBottom: 3 }}>Score</div>
+                  <div style={{ fontSize: 20, fontWeight: 700, lineHeight: 1, color: '#34d399', fontVariantNumeric: 'tabular-nums' }}>98%</div>
+                </div>
               </div>
 
             </div>
