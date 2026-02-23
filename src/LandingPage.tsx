@@ -176,21 +176,21 @@ const LandingPage = () => {
         className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-24 lg:pt-32 z-10"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-          <div className={`flex flex-col md:grid md:grid-cols-2 lg:grid-cols-[1fr,1.25fr] gap-8 md:gap-10 items-center transition-all duration-1000 ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className={`flex flex-col md:grid md:grid-cols-[5fr,7fr] lg:grid-cols-[1fr,1.25fr] gap-6 md:gap-8 lg:gap-10 items-center transition-all duration-1000 ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-4 md:mb-3 lg:mb-6 leading-tight">
                 Secure Your Infrastructure.{' '}
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600">Effortlessly.</span>
               </h1>
-              <p className="text-xl sm:text-2xl text-gray-600 mb-4 leading-relaxed">
+              <p className="text-lg sm:text-xl md:text-base lg:text-xl xl:text-2xl text-gray-600 mb-3 md:mb-2 lg:mb-4 leading-relaxed">
                 Enterprise-grade PAM, Secrets Management, and Zero-Trust Access in one unified platform.
               </p>
-              <p className="text-lg text-gray-500 mb-10">
+              <p className="text-base md:text-sm lg:text-lg text-gray-500 mb-6 md:mb-4 lg:mb-10">
                 Automate 87% of security operations, reduce audit prep from weeks to days, and achieve continuous compliance with AI-powered automation.
               </p>
 
               {/* Compliance Badges */}
-              <div className="mt-10 pt-8 border-t border-gray-200">
+              <div className="mt-4 md:mt-3 lg:mt-10 pt-4 md:pt-3 lg:pt-8 border-t border-gray-200">
                 <p className="text-sm text-gray-400 mb-4">Enterprise-grade security and compliance</p>
                 <div className="flex flex-wrap items-center gap-4">
                   {[
