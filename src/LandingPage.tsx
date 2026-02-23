@@ -1,8 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
 import {
   Shield, Key, UserCog, Lock, Radio, Puzzle,
-  ChevronDown, Menu, X, Play, Check, Star,
+  Check, Star,
   Zap, BarChart3,
   AlertTriangle, Globe, FileCheck, Users, TrendingUp, Clock,
   Award, ArrowRight, Database, FileText, CreditCard
@@ -12,7 +11,6 @@ import {
   CircleCIIcon, BitbucketIcon, SlackIcon, MicrosoftTeamsIcon, PagerDutyIcon,
   OnPremisesIcon, HybridIcon, SIEMIcon, SAMLIcon, WebhooksIcon
 } from './components/TechIcons'
-import DotCard from './components/ui/moving-dot-card'
 import DemoForm from './components/ui/enterprise-demo-form'
 import FloatingNavbar from './components/FloatingNavbar'
 
@@ -29,14 +27,14 @@ const navigationItems: { title: string; dropdown?: DropdownItem }[] = [
       items: [
         { name: 'Accounts Management', link: '/features/pam/accounts-management' },
         { name: 'Session Recording', link: '/features/pam/sessions' },
-        { name: 'Policy Engine' },
-        { name: 'Approvals Workflow' },
-        { name: 'Discovery' },
-        { name: 'Compliance Reports' },
-        { name: 'Threat Analytics' },
-        { name: 'AI Automation' },
-        { name: 'Master Reconcile' },
-        { name: 'JIT Activation' }
+        { name: 'Policy Engine', link: '/features/pam/policy-engine' },
+        { name: 'Approvals Workflow', link: '/features/pam/approvals-workflow' },
+        { name: 'Discovery', link: '/features/pam/discovery' },
+        { name: 'Compliance Reports', link: '/features/pam/compliance-reports' },
+        { name: 'Threat Analytics', link: '/features/pam/threat-analytics' },
+        { name: 'AI Automation', link: '/features/pam/ai-automation' },
+        { name: 'Master Reconcile', link: '/features/pam/master-reconcile' },
+        { name: 'JIT Activation', link: '/features/pam/jit-activation' }
       ]
     }
   },
@@ -46,15 +44,15 @@ const navigationItems: { title: string; dropdown?: DropdownItem }[] = [
       title: 'Secrets Features',
       items: [
         { name: 'Secrets Control Plane', link: '/features/secrets/management' },
-        { name: 'Vault Management' },
-        { name: 'Cloud Discovery (AWS/Azure/GCP)' },
-        { name: 'CI/CD Discovery' },
-        { name: 'Rotation Policies' },
-        { name: 'Integrations' },
-        { name: 'Access Control' },
-        { name: 'Audit & Compliance' },
-        { name: 'AI Automation' },
-        { name: 'Threat Analytics' }
+        { name: 'Vault Management', link: '/features/secrets/vault-management' },
+        { name: 'Cloud Discovery (AWS/Azure/GCP)', link: '/features/secrets/cloud-discovery' },
+        { name: 'CI/CD Discovery', link: '/features/secrets/cicd-discovery' },
+        { name: 'Rotation Policies', link: '/features/secrets/rotation-policies' },
+        { name: 'Integrations', link: '/features/secrets/integrations' },
+        { name: 'Access Control', link: '/features/secrets/access-control' },
+        { name: 'Audit & Compliance', link: '/features/secrets/audit-compliance' },
+        { name: 'AI Automation', link: '/features/secrets/ai-automation' },
+        { name: 'Threat Analytics', link: '/features/secrets/threat-analytics' }
       ]
     }
   },
@@ -63,11 +61,11 @@ const navigationItems: { title: string; dropdown?: DropdownItem }[] = [
     dropdown: {
       title: 'Service Account Features',
       items: [
-        { name: 'Account Lifecycle' },
-        { name: 'Auto-provisioning' },
-        { name: 'Permission Management' },
-        { name: 'Threat Detection' },
-        { name: 'AI Automation' }
+        { name: 'Account Lifecycle', link: '/features/servicefort/account-lifecycle' },
+        { name: 'Auto-provisioning', link: '/features/servicefort/auto-provisioning' },
+        { name: 'Permission Management', link: '/features/servicefort/permission-management' },
+        { name: 'Threat Detection', link: '/features/servicefort/threat-detection' },
+        { name: 'AI Automation', link: '/features/servicefort/ai-automation' }
       ]
     }
   },
@@ -76,13 +74,13 @@ const navigationItems: { title: string; dropdown?: DropdownItem }[] = [
     dropdown: {
       title: 'Personal Vault Features',
       items: [
-        { name: 'Secure Storage' },
-        { name: 'Secret Management' },
-        { name: 'Password Generator' },
-        { name: 'Version History' },
-        { name: 'Rotation Policies' },
-        { name: 'Discovery & Scanning' },
-        { name: 'Session Recording' }
+        { name: 'Secure Storage', link: '/features/personal-vault/secure-storage' },
+        { name: 'Secret Management', link: '/features/personal-vault/secret-management' },
+        { name: 'Password Generator', link: '/features/personal-vault/password-generator' },
+        { name: 'Version History', link: '/features/personal-vault/version-history' },
+        { name: 'Rotation Policies', link: '/features/personal-vault/rotation-policies' },
+        { name: 'Discovery & Scanning', link: '/features/personal-vault/discovery-scanning' },
+        { name: 'Session Recording', link: '/features/personal-vault/session-recording' }
       ]
     }
   },
@@ -91,12 +89,12 @@ const navigationItems: { title: string; dropdown?: DropdownItem }[] = [
     dropdown: {
       title: 'Remote Access Features',
       items: [
-        { name: 'Zero-Trust Access' },
-        { name: 'Session Management' },
-        { name: 'Device Compliance' },
-        { name: 'MFA Integration' },
-        { name: 'Geofencing' },
-        { name: 'AI Automation' }
+        { name: 'Zero-Trust Access', link: '/features/remote-access/zero-trust' },
+        { name: 'Session Management', link: '/features/remote-access/session-management' },
+        { name: 'Device Compliance', link: '/features/remote-access/device-compliance' },
+        { name: 'MFA Integration', link: '/features/remote-access/mfa-integration' },
+        { name: 'Geofencing', link: '/features/remote-access/geofencing' },
+        { name: 'AI Automation', link: '/features/remote-access/ai-automation' }
       ]
     }
   },
