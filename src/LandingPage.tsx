@@ -173,10 +173,10 @@ const LandingPage = () => {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 z-10"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-24 lg:pt-32 z-10"
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className={`grid lg:grid-cols-[1fr,1.25fr] gap-10 items-center transition-all duration-1000 ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+          <div className={`flex flex-col md:grid md:grid-cols-2 lg:grid-cols-[1fr,1.25fr] gap-8 md:gap-10 items-center transition-all duration-1000 ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div>
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
                 Secure Your Infrastructure.{' '}
@@ -210,25 +210,26 @@ const LandingPage = () => {
                 </div>
               </div>
             </div>
-            <div className={`relative transition-all duration-1000 delay-300 ${heroVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+            <div className={`relative w-full transition-all duration-1000 delay-300 ${heroVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
 
               {/* ── Morphing background orbs ── */}
               <div style={{ position: 'absolute', top: '10%', left: '5%', width: 320, height: 320, borderRadius: '50%', background: 'radial-gradient(circle, rgba(99,102,241,0.16) 0%, transparent 68%)', filter: 'blur(50px)', animation: 'hero-v2-orb-pulse 5.5s ease-in-out infinite', pointerEvents: 'none', zIndex: 0 }} />
               <div style={{ position: 'absolute', bottom: '5%', right: '2%', width: 260, height: 260, borderRadius: '50%', background: 'radial-gradient(circle, rgba(59,130,246,0.13) 0%, transparent 68%)', filter: 'blur(42px)', animation: 'hero-v2-orb-pulse 7s ease-in-out infinite 2s', pointerEvents: 'none', zIndex: 0 }} />
 
-              {/* ── Orbital rings (perspective wrapper) ── */}
+              {/* ── Orbital rings ── */}
               <div style={{ position: 'absolute', inset: '-10%', perspective: '900px', pointerEvents: 'none', zIndex: 2 }}>
                 <div style={{ position: 'absolute', inset: 0, border: '1.5px solid transparent', borderTopColor: 'rgba(99,102,241,0.55)', borderRightColor: 'rgba(99,102,241,0.22)', borderBottomColor: 'rgba(99,102,241,0.06)', borderLeftColor: 'rgba(99,102,241,0.3)', borderRadius: '50%', animation: 'hero-v2-spin-cw 26s linear infinite' }} />
                 <div style={{ position: 'absolute', inset: '14%', border: '1px dashed rgba(59,130,246,0.28)', borderRadius: '50%', animation: 'hero-v2-spin-ccw 17s linear infinite' }} />
               </div>
 
               {/* ── Image + corner brackets ── */}
-              <div style={{ position: 'relative', zIndex: 1, animation: 'hero-v2-img-float 5.5s ease-in-out infinite' }}>
+              <div className="relative mx-auto w-full max-w-[520px] md:max-w-full" style={{ zIndex: 1, animation: 'hero-v2-img-float 5.5s ease-in-out infinite' }}>
                 <img
                   src="/MainHeroimg.png"
                   alt="Shield Vault - Secure Your Infrastructure"
                   className="w-full h-auto object-contain"
                   style={{
+                    minHeight: 260,
                     maskImage: 'linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)',
                     WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)',
                     maskComposite: 'intersect',
@@ -258,8 +259,8 @@ const LandingPage = () => {
                 </div>
               </div>
 
-              {/* ── Inline stat strip — mobile only (below image) ── */}
-              <div className="flex lg:hidden justify-center gap-3 mt-2 px-2">
+              {/* ── Inline stat strip — mobile & tablet (below lg) ── */}
+              <div className="flex lg:hidden justify-center gap-3 mt-3 px-2">
                 <div style={{ flex: 1, background: 'rgba(15,23,42,0.82)', backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)', border: '1px solid rgba(99,102,241,0.25)', borderRadius: 12, padding: '8px 12px', textAlign: 'center', animation: 'hero-v2-card-float-a 5s ease-in-out infinite' }}>
                   <div style={{ fontSize: 8, color: 'rgba(148,163,184,0.8)', letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600, marginBottom: 3 }}>Sessions</div>
                   <div style={{ fontSize: 20, fontWeight: 700, lineHeight: 1, color: '#e2e8f0', fontVariantNumeric: 'tabular-nums' }}>156</div>
