@@ -11,7 +11,6 @@ const RotationPoliciesPage = () => {
       heroTitle="Rotation Policies"
       heroSubtitle="Automated Secret Rotation with Policy-Based Schedules, Zero-Downtime Updates, and 99.8% Success Rate"
       heroGradient="from-purple-50 via-white to-purple-50"
-      heroImage="/SecretManagement.jpeg"
       
       overview="Schedule or trigger automatic secret rotation with zero-downtime updates across all integrated platforms. Support for time-based (30/60/90 day), event-based (breach detection), usage-based (after N accesses), and compliance-based rotation. 250+ automated rotations per month with 99.8% success rate."
       

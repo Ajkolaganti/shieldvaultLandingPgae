@@ -11,7 +11,6 @@ const ServiceFortAIAutomationPage = () => {
       heroTitle="ServiceFort AI Automation"
       heroSubtitle="AI-Powered Service Account Management with Autonomous Agents and Smart Automation Rules"
       heroGradient="from-blue-50 via-white to-blue-50"
-      heroImage="/SAV.jpeg"
       
       overview="Automate 80% of service account management with AI-powered rules and autonomous agents. Auto-provision new accounts, rotate credentials, review permissions, detect orphans, and decommission unused accounts—all without human intervention. Reduce management overhead from 20+ hours/week to under 4 hours."
       

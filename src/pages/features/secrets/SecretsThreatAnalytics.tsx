@@ -11,7 +11,6 @@ const SecretsThreatAnalyticsPage = () => {
       heroTitle="Secrets Threat Analytics"
       heroSubtitle="AI-Powered Detection of Secret Abuse, Anomalous Access Patterns, and Credential Compromise"
       heroGradient="from-purple-50 via-white to-purple-50"
-      heroImage="/SecretManagement.jpeg"
       
       overview="Detect secret abuse, anomalous access patterns, and credential compromise in real-time with AI-powered threat analytics. Behavioral analysis establishes normal secret access patterns and identifies deviations with 96% confidence. Real-time alerts for bulk secret access, off-hours usage, and exfiltration indicators."
       

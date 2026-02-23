@@ -38,7 +38,6 @@ interface FeaturePageProps {
   heroTitle: string
   heroSubtitle: string
   heroGradient: string
-  heroImage?: string
 
   // What It Does
   overview: string
@@ -76,7 +75,6 @@ const FeaturePageTemplate = ({
   heroTitle,
   heroSubtitle,
   heroGradient,
-  heroImage,
   overview,
   problem,
   benefit,
@@ -111,13 +109,6 @@ const FeaturePageTemplate = ({
 
       {/* Hero Section */}
       <section className={`relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-16 bg-gradient-to-br ${heroGradient}`}>
-        {heroImage && (
-          <>
-            <div className="absolute inset-0">
-              <img src={heroImage} alt={heroTitle} className="w-full h-full object-cover opacity-10" />
-            </div>
-          </>
-        )}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <div className="max-w-4xl mx-auto">
             <div className="mb-8 inline-block animate-float">

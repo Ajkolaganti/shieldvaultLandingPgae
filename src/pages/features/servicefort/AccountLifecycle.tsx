@@ -11,7 +11,6 @@ const AccountLifecyclePage = () => {
       heroTitle="Account Lifecycle"
       heroSubtitle="Automated Service Account Lifecycle Management from Provisioning to Decommissioning"
       heroGradient="from-blue-50 via-white to-blue-50"
-      heroImage="/SAV.jpeg"
       
       overview="Manage the complete lifecycle of service accounts from creation to decommissioning with automated workflows. Track 1,247+ service accounts across Active Directory, cloud IAM, databases, and applications. Enforce policies for creation, review, rotation, and retirement."
       

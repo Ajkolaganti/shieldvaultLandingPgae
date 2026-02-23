@@ -11,7 +11,6 @@ const DiscoveryPage = () => {
       heroTitle="Privileged Account Discovery"
       heroSubtitle="Automatically Discover, Classify, and Onboard Privileged Accounts Across Your Entire Infrastructure"
       heroGradient="from-blue-50 via-white to-blue-50"
-      heroImage="/PAM.jpeg"
       
       overview="Agent-based and agentless scanning automatically discovers all privileged accounts across Windows, Linux, Oracle, AWS, Azure, GCP, databases, and applications in under 2 minutes. AI classifies accounts by type, risk level, and ownership with 98% accuracy, eliminating shadow admin accounts."
       

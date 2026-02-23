@@ -11,7 +11,6 @@ const PermissionManagementPage = () => {
       heroTitle="Permission Management"
       heroSubtitle="Enforce Least Privilege for Service Accounts with Continuous Permission Monitoring"
       heroGradient="from-blue-50 via-white to-blue-50"
-      heroImage="/SAV.jpeg"
       
       overview="Monitor and enforce least-privilege permissions for all service accounts. AI analyzes actual usage patterns to identify over-privileged accounts and recommend right-sizing. 347 permission violations detected and remediated. Continuous monitoring ensures accounts never accumulate unnecessary privileges."
       

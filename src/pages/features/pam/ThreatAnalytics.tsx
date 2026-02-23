@@ -11,7 +11,6 @@ const ThreatAnalyticsPage = () => {
       heroTitle="AI-Powered Threat Analytics"
       heroSubtitle="Machine Learning Algorithms Detect Anomalous Behavior, Credential Abuse, and Insider Threats in Real-Time"
       heroGradient="from-blue-50 via-white to-blue-50"
-      heroImage="/PAM.jpeg"
       
       overview="Detect threats 10x faster than manual monitoring with AI-powered behavioral analytics. Machine learning algorithms analyze user behavior, entity patterns, and contextual data to identify anomalies with 95%+ accuracy. Real-time risk scoring (0-100), predictive threat modeling, and automated response actions protect against insider threats and credential abuse."
       

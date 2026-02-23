@@ -11,7 +11,6 @@ const DeviceCompliancePage = () => {
       heroTitle="Device Compliance"
       heroSubtitle="Enforce Device Security Posture Before and During Remote Access Sessions"
       heroGradient="from-green-50 via-white to-green-50"
-      heroImage="/RemoteAccess.jpeg"
       
       overview="Verify device security posture before granting remote access and continuously during sessions. Check OS version, patch level, encryption status, antivirus, firewall, and custom compliance rules. Non-compliant devices blocked or given limited access with remediation guidance."
       

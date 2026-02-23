@@ -11,7 +11,6 @@ const PVSessionRecordingPage = () => {
       heroTitle="Session Recording"
       heroSubtitle="Record and Audit Personal Vault Access Sessions for Compliance and Security"
       heroGradient="from-indigo-50 via-white to-indigo-50"
-      heroImage="/PersonalVault.jpeg"
       
       overview="Record vault access sessions for security auditing and compliance. Track every action within your personal vault: secrets viewed, copied, shared, modified, and deleted. Session replays provide visual timeline of vault interactions. Perfect for compliance evidence and security investigations."
       

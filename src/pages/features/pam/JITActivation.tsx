@@ -11,7 +11,6 @@ const JITActivationPage = () => {
       heroTitle="Just-In-Time (JIT) Activation"
       heroSubtitle="Eliminate Standing Privileges with Temporary, On-Demand Access That Automatically Expires"
       heroGradient="from-blue-50 via-white to-blue-50"
-      heroImage="/PAM.jpeg"
       
       overview="Eliminate standing privileges by granting temporary, on-demand access that automatically expires. Self-service access requests, multi-level approval workflows, time-bound access from minutes to days, and automatic privilege revocation. Average JITA request approval: 30 seconds. Auto-revocation success rate: 98.5%. Standing privilege reduction: 90%+."
       

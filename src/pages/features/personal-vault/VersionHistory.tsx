@@ -11,7 +11,6 @@ const VersionHistoryPage = () => {
       heroTitle="Version History"
       heroSubtitle="Complete Change Tracking with One-Click Rollback and Side-by-Side Comparison"
       heroGradient="from-indigo-50 via-white to-indigo-50"
-      heroImage="/PersonalVault.jpeg"
       
       overview="Every change to every secret is tracked with full version history. See who changed what, when, and why. Compare any two versions side-by-side. One-click rollback to any previous version. Never lose a credential again—even accidentally overwritten or deleted items are recoverable."
       

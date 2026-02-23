@@ -11,7 +11,6 @@ const SecretsAccessControlPage = () => {
       heroTitle="Secrets Access Control"
       heroSubtitle="Granular RBAC with Secret-Level Permissions, Approval Workflows, and Complete Version History"
       heroGradient="from-purple-50 via-white to-purple-50"
-      heroImage="/SecretManagement.jpeg"
       
       overview="Control who can access, rotate, or view secrets with fine-grained role-based access control. Secret-level permissions, time-bound access, approval workflows for sensitive secrets, and complete audit logs of every access event. Enforce least privilege for secrets across your entire organization."
       

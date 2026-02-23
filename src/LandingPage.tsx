@@ -176,7 +176,7 @@ const LandingPage = () => {
         className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 z-10"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className={`grid lg:grid-cols-2 gap-16 items-center transition-all duration-1000 ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className={`grid lg:grid-cols-[1fr,1.25fr] gap-10 items-center transition-all duration-1000 ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div>
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
                 Secure Your Infrastructure.{' '}
@@ -210,127 +210,56 @@ const LandingPage = () => {
                 </div>
               </div>
             </div>
-            <div className={`relative transition-all duration-1000 delay-300 ${heroVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-              <div className="relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition duration-500"></div>
-                <div className="relative bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100">
-                  {/* Header */}
-                  <div className="bg-gradient-to-r from-gray-50 to-white px-6 py-4 border-b border-gray-100">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-md">
-                          <Shield className="w-6 h-6 text-white" />
-                        </div>
-                        <div>
-                          <h3 className="text-gray-900 font-semibold text-lg">Shield Vault</h3>
-                          <p className="text-xs text-gray-500">Live Security Overview</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                        <span className="text-xs text-green-600 font-medium">Live</span>
-                      </div>
-                    </div>
-                  </div>
+            <div className={`relative transition-all duration-1000 delay-300 ${heroVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`} style={{ overflow: 'visible' }}>
 
-                  {/* Content */}
-                  <div className="p-6 space-y-4">
-                    {/* Real-time Activity Feed */}
-                    <div className="space-y-3">
-                      <div className="flex items-start space-x-3 bg-green-50 rounded-lg p-3 border border-green-100 animate-fade-in">
-                        <div className="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0 border border-green-200">
-                          <Check className="w-4 h-4 text-green-600" />
-                        </div>
-                        <div className="flex-grow">
-                          <div className="flex items-center justify-between mb-1">
-                            <span className="text-sm font-semibold text-gray-900">Secret Rotation Complete</span>
-                            <span className="text-xs text-gray-400">2s ago</span>
-                          </div>
-                          <p className="text-xs text-gray-500">AWS Production DB rotated successfully</p>
-                        </div>
-                      </div>
+              {/* ── Morphing background orbs ── */}
+              <div style={{ position: 'absolute', top: '10%', left: '5%', width: 320, height: 320, borderRadius: '50%', background: 'radial-gradient(circle, rgba(99,102,241,0.16) 0%, transparent 68%)', filter: 'blur(50px)', animation: 'hero-v2-orb-pulse 5.5s ease-in-out infinite', pointerEvents: 'none', zIndex: 0 }} />
+              <div style={{ position: 'absolute', bottom: '5%', right: '2%', width: 260, height: 260, borderRadius: '50%', background: 'radial-gradient(circle, rgba(59,130,246,0.13) 0%, transparent 68%)', filter: 'blur(42px)', animation: 'hero-v2-orb-pulse 7s ease-in-out infinite 2s', pointerEvents: 'none', zIndex: 0 }} />
 
-                      <div className="flex items-start space-x-3 bg-blue-50 rounded-lg p-3 border border-blue-100">
-                        <div className="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0 border border-blue-200">
-                          <Key className="w-4 h-4 text-blue-600" />
-                        </div>
-                        <div className="flex-grow">
-                          <div className="flex items-center justify-between mb-1">
-                            <span className="text-sm font-semibold text-gray-900">New Access Request</span>
-                            <span className="text-xs text-gray-400">12s ago</span>
-                          </div>
-                          <p className="text-xs text-gray-500">admin@company.com • Production SSH</p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-start space-x-3 bg-purple-50 rounded-lg p-3 border border-purple-100">
-                        <div className="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center flex-shrink-0 border border-purple-200">
-                          <Zap className="w-4 h-4 text-purple-600" />
-                        </div>
-                        <div className="flex-grow">
-                          <div className="flex items-center justify-between mb-1">
-                            <span className="text-sm font-semibold text-gray-900">AI Policy Optimized</span>
-                            <span className="text-xs text-gray-400">1m ago</span>
-                          </div>
-                          <p className="text-xs text-gray-500">3 policies updated for better security</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Key Metrics Grid */}
-                    <div className="grid grid-cols-3 gap-3 pt-4 border-t border-gray-100">
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-gray-900 mb-1">156</div>
-                        <div className="text-xs text-gray-500">Active Sessions</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-green-600 mb-1">98.5%</div>
-                        <div className="text-xs text-gray-500">Success Rate</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-blue-600 mb-1">12.8K</div>
-                        <div className="text-xs text-gray-500">Secrets</div>
-                      </div>
-                    </div>
-
-                    {/* Security Status */}
-                    <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-4 border border-green-100">
-                      <div className="flex items-center justify-between mb-3">
-                        <span className="text-sm font-semibold text-gray-900">Security Posture</span>
-                        <span className="text-2xl font-bold text-green-600">98%</span>
-                      </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-                        <div className="bg-gradient-to-r from-green-500 to-blue-500 h-full rounded-full" style={{ width: '98%' }}></div>
-                      </div>
-                      <div className="flex items-center justify-between mt-2 text-xs text-gray-500">
-                        <span>Excellent</span>
-                        <span className="flex items-center space-x-1">
-                          <TrendingUp className="w-3 h-3 text-green-500" />
-                          <span className="text-green-600">+2% this week</span>
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Quick Stats */}
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="bg-gray-50 rounded-lg p-3 border border-gray-100">
-                        <div className="flex items-center space-x-2 mb-2">
-                          <AlertTriangle className="w-4 h-4 text-yellow-500" />
-                          <span className="text-xs text-gray-500">Threats Blocked</span>
-                        </div>
-                        <div className="text-xl font-bold text-gray-900">2,847</div>
-                      </div>
-                      <div className="bg-gray-50 rounded-lg p-3 border border-gray-100">
-                        <div className="flex items-center space-x-2 mb-2">
-                          <Clock className="w-4 h-4 text-blue-500" />
-                          <span className="text-xs text-gray-500">Avg Response</span>
-                        </div>
-                        <div className="text-xl font-bold text-gray-900">2.4s</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              {/* ── Orbital rings (perspective wrapper) ── */}
+              <div style={{ position: 'absolute', inset: '-10%', perspective: '900px', pointerEvents: 'none', zIndex: 2 }}>
+                {/* outer ring */}
+                <div style={{ position: 'absolute', inset: 0, border: '1.5px solid transparent', borderTopColor: 'rgba(99,102,241,0.55)', borderRightColor: 'rgba(99,102,241,0.22)', borderBottomColor: 'rgba(99,102,241,0.06)', borderLeftColor: 'rgba(99,102,241,0.3)', borderRadius: '50%', animation: 'hero-v2-spin-cw 26s linear infinite' }} />
+                {/* inner ring */}
+                <div style={{ position: 'absolute', inset: '14%', border: '1px dashed rgba(59,130,246,0.28)', borderRadius: '50%', animation: 'hero-v2-spin-ccw 17s linear infinite' }} />
               </div>
+
+              {/* ── Image + corner brackets ── */}
+              <div style={{ position: 'relative', zIndex: 1, animation: 'hero-v2-img-float 5.5s ease-in-out infinite' }}>
+                <img
+                  src="/MainHeroimg.png"
+                  alt="Shield Vault - Secure Your Infrastructure"
+                  className="w-full h-auto object-contain"
+                  style={{
+                    maskImage: 'linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)',
+                    WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)',
+                    maskComposite: 'intersect',
+                    WebkitMaskComposite: 'source-in',
+                  }}
+                />
+                {/* Corner targeting brackets */}
+                <div style={{ position: 'absolute', top: 16, left: '1%', width: 22, height: 22, borderTop: '2px solid rgba(99,102,241,0.85)', borderLeft: '2px solid rgba(99,102,241,0.85)', borderRadius: '3px 0 0 0', pointerEvents: 'none', zIndex: 3, animation: 'hero-v2-bracket-glow 3s ease-in-out infinite' }} />
+                <div style={{ position: 'absolute', top: 16, right: '9%', width: 22, height: 22, borderTop: '2px solid rgba(99,102,241,0.85)', borderRight: '2px solid rgba(99,102,241,0.85)', borderRadius: '0 3px 0 0', pointerEvents: 'none', zIndex: 3, animation: 'hero-v2-bracket-glow 3s ease-in-out infinite 0.5s' }} />
+                <div style={{ position: 'absolute', bottom: 16, left: '1%', width: 22, height: 22, borderBottom: '2px solid rgba(99,102,241,0.85)', borderLeft: '2px solid rgba(99,102,241,0.85)', borderRadius: '0 0 0 3px', pointerEvents: 'none', zIndex: 3, animation: 'hero-v2-bracket-glow 3s ease-in-out infinite 1s' }} />
+                <div style={{ position: 'absolute', bottom: 16, right: '9%', width: 22, height: 22, borderBottom: '2px solid rgba(99,102,241,0.85)', borderRight: '2px solid rgba(99,102,241,0.85)', borderRadius: '0 0 3px 0', pointerEvents: 'none', zIndex: 3, animation: 'hero-v2-bracket-glow 3s ease-in-out infinite 1.5s' }} />
+              </div>
+
+              {/* ── Floating dark stat cards ── */}
+              <div style={{ position: 'absolute', top: '10%', right: '-2%', background: 'rgba(15,23,42,0.86)', backdropFilter: 'blur(18px)', WebkitBackdropFilter: 'blur(18px)', border: '1px solid rgba(99,102,241,0.28)', borderRadius: 14, padding: '10px 16px', animation: 'hero-v2-card-float-a 5s ease-in-out infinite', zIndex: 5, pointerEvents: 'none', boxShadow: '0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.07)', minWidth: 120 }}>
+                <div style={{ fontSize: 9, color: 'rgba(148,163,184,0.85)', marginBottom: 4, letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600 }}>Active Sessions</div>
+                <div style={{ fontSize: 26, fontWeight: 700, lineHeight: 1, animation: 'hero-v2-num-glow 3s ease-in-out infinite', fontVariantNumeric: 'tabular-nums' }}>156</div>
+              </div>
+
+              <div style={{ position: 'absolute', bottom: '16%', left: '-1%', background: 'rgba(15,23,42,0.86)', backdropFilter: 'blur(18px)', WebkitBackdropFilter: 'blur(18px)', border: '1px solid rgba(59,130,246,0.24)', borderRadius: 14, padding: '10px 16px', animation: 'hero-v2-card-float-b 6.5s ease-in-out infinite', zIndex: 5, pointerEvents: 'none', boxShadow: '0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.07)', minWidth: 130 }}>
+                <div style={{ fontSize: 9, color: 'rgba(148,163,184,0.85)', marginBottom: 4, letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600 }}>Threats Blocked</div>
+                <div style={{ fontSize: 26, fontWeight: 700, lineHeight: 1, animation: 'hero-v2-num-glow 3.5s ease-in-out infinite 0.8s', fontVariantNumeric: 'tabular-nums' }}>2,847</div>
+              </div>
+
+              <div style={{ position: 'absolute', bottom: '44%', right: '-4%', background: 'rgba(15,23,42,0.86)', backdropFilter: 'blur(18px)', WebkitBackdropFilter: 'blur(18px)', border: '1px solid rgba(16,185,129,0.24)', borderRadius: 14, padding: '10px 16px', animation: 'hero-v2-card-float-a 7s ease-in-out infinite 1.4s', zIndex: 5, pointerEvents: 'none', boxShadow: '0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.07)', minWidth: 120 }}>
+                <div style={{ fontSize: 9, color: 'rgba(148,163,184,0.85)', marginBottom: 4, letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600 }}>Security Score</div>
+                <div style={{ fontSize: 26, fontWeight: 700, lineHeight: 1, color: '#34d399', fontVariantNumeric: 'tabular-nums' }}>98%</div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -355,7 +284,8 @@ const LandingPage = () => {
                 features: ['200+ account management', 'Session recording', 'MFA enforcement', 'Real-time threat detection'],
                 stats: '14 integrated features',
                 color: 'blue',
-                image: '/PAM.jpeg'
+                image: '/PAMimg.png',
+                imgBlend: true
               },
               {
                 icon: Key,
@@ -379,7 +309,8 @@ const LandingPage = () => {
                 features: ['6 secret types', 'Password generator', 'Version history', 'Encryption at rest'],
                 stats: '20 commands implemented',
                 color: 'green',
-                image: '/PersonalVault.jpeg'
+                image: '/personalVaultimg.png',
+                imgBlend: true
               },
               {
                 icon: Radio,
@@ -407,21 +338,21 @@ const LandingPage = () => {
                   <div className="absolute -inset-0.5 bg-blue-400/5 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
                   <div className="relative bg-white rounded-xl overflow-hidden hover:scale-[1.02] transition-all duration-300 cursor-pointer shadow-sm hover:shadow-lg border border-gray-100/80">
                     {module.image && (
-                      <div className="relative h-48 overflow-hidden">
+                      <div className={`relative h-48 overflow-hidden ${(module as any).imgBlend ? 'bg-white' : ''}`}>
                         <img 
                           src={module.image} 
                           alt={module.title} 
-                          className="w-full h-full object-cover"
+                          className={`w-full h-full object-cover ${ (module as any).imgBlend ? 'mix-blend-multiply' : ''}`}
                           loading="lazy"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                        <div className={`absolute inset-0 ${(module as any).imgBlend ? 'bg-gradient-to-t from-white/30 via-transparent to-transparent' : 'bg-gradient-to-t from-black/50 via-transparent to-transparent'}`}></div>
                         <div className="absolute top-3 right-3">
-                          <div className={`px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-white shadow-lg border border-white/20`}>
+                          <div className={`px-3 py-1 rounded-full text-xs font-semibold shadow-lg border ${(module as any).imgBlend ? 'bg-white/80 text-gray-700 border-gray-200' : 'bg-white/10 text-white border-white/20'}`}>
                             {module.stats}
                           </div>
                         </div>
-                          <div className={`absolute bottom-3 left-3 w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center shadow-lg border border-white/20`}>
-                            <Icon className="w-6 h-6 text-gray-200" />
+                          <div className={`absolute bottom-3 left-3 w-12 h-12 rounded-lg flex items-center justify-center shadow-lg border ${(module as any).imgBlend ? 'bg-white/80 border-gray-200' : 'bg-white/10 border-white/20'}`}>
+                            <Icon className={`w-6 h-6 ${(module as any).imgBlend ? 'text-blue-600' : 'text-gray-200'}`} />
                           </div>
                       </div>
                     )}

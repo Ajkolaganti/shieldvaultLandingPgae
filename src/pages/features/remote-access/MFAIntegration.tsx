@@ -11,7 +11,6 @@ const MFAIntegrationPage = () => {
       heroTitle="MFA Integration"
       heroSubtitle="Adaptive Multi-Factor Authentication with Step-Up Verification for Sensitive Resources"
       heroGradient="from-green-50 via-white to-green-50"
-      heroImage="/RemoteAccess.jpeg"
       
       overview="Enforce multi-factor authentication for all remote access with adaptive policies. Support for TOTP, push notifications, FIDO2 hardware keys, biometrics, and SMS. Adaptive MFA adjusts requirements based on risk: low-risk access uses simple MFA, high-risk triggers additional factors."
       

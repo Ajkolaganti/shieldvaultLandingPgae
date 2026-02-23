@@ -11,7 +11,6 @@ const ServiceFortPage = () => {
       heroTitle="ServiceFort - Service Account Vaulting"
       heroSubtitle="Secure and Manage Non-Human Accounts at Enterprise Scale"
       heroGradient="from-blue-50 via-white to-blue-50"
-      heroImage="/SAV.jpeg"
       
       overview="Manage 340+ service accounts with boundary-based access control, automated credential rotation, and real-time monitoring. Eliminate service account sprawl with AI-powered risk scoring, privilege escalation detection, and comprehensive audit trails for non-human identity security."
       

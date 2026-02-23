@@ -11,7 +11,6 @@ const AutoProvisioningPage = () => {
       heroTitle="Auto-Provisioning"
       heroSubtitle="Automated Service Account Provisioning with Policy Enforcement and Zero-Touch Deployment"
       heroGradient="from-blue-50 via-white to-blue-50"
-      heroImage="/SAV.jpeg"
       
       overview="Provision service accounts automatically based on pre-approved templates and policies. Zero-touch deployment with naming conventions, password policies, minimum privileges, and documentation enforced at creation. Integrate with CI/CD and IaC for automated provisioning during application deployment."
       

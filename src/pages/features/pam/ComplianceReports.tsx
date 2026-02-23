@@ -11,7 +11,6 @@ const ComplianceReportsPage = () => {
       heroTitle="PAM Compliance Reports"
       heroSubtitle="Automated Compliance Report Generation for SOC 2, HIPAA, PCI-DSS, ISO 27001, and More"
       heroGradient="from-blue-50 via-white to-blue-50"
-      heroImage="/PAM.jpeg"
       
       overview="Generate comprehensive PAM compliance reports for SOC 2, HIPAA, PCI-DSS, ISO 27001, GDPR, NIST 800-53, and FedRAMP with one click. Pre-built templates, automated evidence collection, real-time compliance dashboards, and export to PDF, Excel, and JSON. Reduce audit prep from weeks to hours."
       

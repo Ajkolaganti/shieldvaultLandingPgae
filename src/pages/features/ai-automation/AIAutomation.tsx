@@ -11,7 +11,6 @@ const AIAutomationPage = () => {
       heroTitle="AI & Automation"
       heroSubtitle="Intelligent Security That Works While You Sleep"
       heroGradient="from-purple-50 via-white to-purple-50"
-      heroImage="/AiAutomations.jpeg"
       
       overview="Eliminate 87% of manual security tasks with AI-powered automation, predictive threat detection, and autonomous security agents. From 6 hours of manual work per day to 15 minutes of strategic oversight with 98.5% automation success rate across 156+ rules executing monthly."
       

@@ -11,7 +11,6 @@ const RASessionManagementPage = () => {
       heroTitle="Session Management"
       heroSubtitle="Complete Session Lifecycle Control with Recording, Monitoring, and Real-Time Intervention"
       heroGradient="from-green-50 via-white to-green-50"
-      heroImage="/RemoteAccess.jpeg"
       
       overview="Manage every remote access session from start to finish. Real-time monitoring, full session recording, live intervention, and automated session controls. Track 2,847+ active sessions with AI-powered anomaly detection. Terminate suspicious sessions instantly."
       

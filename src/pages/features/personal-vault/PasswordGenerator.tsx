@@ -11,7 +11,6 @@ const PasswordGeneratorPage = () => {
       heroTitle="Password Generator"
       heroSubtitle="Cryptographically Secure Password Generation with Policy Compliance and Breach Checking"
       heroGradient="from-indigo-50 via-white to-indigo-50"
-      heroImage="/PersonalVault.jpeg"
       
       overview="Generate cryptographically secure passwords, passphrases, and API keys with one click. Customizable length, complexity, and character requirements. Automatic compliance with organization password policies. Real-time breach checking ensures generated passwords haven't appeared in known breaches."
       

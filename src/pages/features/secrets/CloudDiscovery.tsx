@@ -11,7 +11,6 @@ const CloudDiscoveryPage = () => {
       heroTitle="Cloud Discovery (AWS/Azure/GCP)"
       heroSubtitle="Automatically Discover Secrets Across AWS, Azure, and GCP Accounts and Projects"
       heroGradient="from-purple-50 via-white to-purple-50"
-      heroImage="/SecretManagement.jpeg"
       
       overview="Automatically discover secrets across AWS Secrets Manager, Parameter Store, Azure Key Vault, App Configuration, GCP Secret Manager, and cloud databases. Create complete secret inventories, map ownership, assess risk, and import to centralized vault—all in minutes."
       

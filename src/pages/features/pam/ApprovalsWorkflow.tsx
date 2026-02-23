@@ -11,7 +11,6 @@ const ApprovalsWorkflowPage = () => {
       heroTitle="Approval Workflows"
       heroSubtitle="Configurable Multi-Stage Approval Workflows with Automatic Escalation and Real-Time Notifications"
       heroGradient="from-blue-50 via-white to-blue-50"
-      heroImage="/PAM.jpeg"
       
       overview="Design and deploy multi-level approval chains for privileged access requests with role-based approvers, time-based auto-escalation, and Slack/Teams integration. Average approval time of 30 seconds with 96.8% escalation success rate and complete approval audit trails."
       

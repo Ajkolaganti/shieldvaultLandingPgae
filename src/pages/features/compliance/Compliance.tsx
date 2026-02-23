@@ -11,7 +11,6 @@ const CompliancePage = () => {
       heroTitle="Compliance & Audit"
       heroSubtitle="Automated Compliance Reporting for SOC 2, HIPAA, ISO 27001, and More"
       heroGradient="from-amber-50 via-white to-amber-50"
-      heroImage="/Compliance.jpeg"
       
       overview="Transform weeks of audit preparation into hours with automated compliance reporting, continuous monitoring, and evidence collection. Pre-built templates for SOC 2 Type II, HIPAA, PCI-DSS, ISO 27001, NIST 800-53, GDPR, and FedRAMP with one-click report generation and real-time compliance dashboards."
       

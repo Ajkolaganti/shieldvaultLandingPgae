@@ -11,7 +11,6 @@ const VaultManagementPage = () => {
       heroTitle="Vault Management"
       heroSubtitle="Centralized Secret Vault with Multi-Platform Synchronization and Zero-Knowledge Architecture"
       heroGradient="from-purple-50 via-white to-purple-50"
-      heroImage="/SecretManagement.jpeg"
       
       overview="Manage all your secrets from a single, unified vault with multi-platform synchronization across AWS, Azure, GCP, and on-premises systems. Zero-knowledge architecture ensures your secrets are never visible to anyone—not even Shield Vault. Import, organize, version, and share secrets securely with RBAC and complete audit trails."
       

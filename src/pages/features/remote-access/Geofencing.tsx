@@ -11,7 +11,6 @@ const GeofencingPage = () => {
       heroTitle="Geofencing"
       heroSubtitle="Location-Based Access Policies with Geographic Restrictions and Anomaly Detection"
       heroGradient="from-green-50 via-white to-green-50"
-      heroImage="/RemoteAccess.jpeg"
       
       overview="Control remote access based on geographic location. Define allowed countries, regions, and IP ranges. Block access from high-risk countries. Detect impossible travel (user in NYC at 2:00 PM, login from London at 2:05 PM). Automatic alerts for location-based anomalies."
       

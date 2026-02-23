@@ -11,7 +11,6 @@ const ThreatDetectionPage = () => {
       heroTitle="Threat Detection"
       heroSubtitle="AI-Powered Behavioral Analysis for Service Account Abuse and Compromise Detection"
       heroGradient="from-blue-50 via-white to-blue-50"
-      heroImage="/SAV.jpeg"
       
       overview="Detect service account compromise and abuse in real-time with AI behavioral analytics. Establish baselines for normal service account behavior and instantly identify deviations: lateral movement, unusual data access, off-hours activity, and privilege escalation attempts. 96% detection accuracy with automated response."
       

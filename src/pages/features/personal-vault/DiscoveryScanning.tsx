@@ -11,7 +11,6 @@ const DiscoveryScanningPage = () => {
       heroTitle="Discovery & Scanning"
       heroSubtitle="Find Exposed Credentials Across Your Digital Footprint—Browsers, Files, Emails, and Code"
       heroGradient="from-indigo-50 via-white to-indigo-50"
-      heroImage="/PersonalVault.jpeg"
       
       overview="Scan your digital footprint for exposed or forgotten credentials: browser saved passwords, config files, environment variables, email attachments, and code repositories. Find credentials that should be in your vault but aren't. Breach monitoring alerts you when your credentials appear in public data breaches."
       

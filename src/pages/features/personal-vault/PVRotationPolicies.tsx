@@ -11,7 +11,6 @@ const PVRotationPoliciesPage = () => {
       heroTitle="Rotation Policies"
       heroSubtitle="Automated Personal Credential Rotation with Smart Scheduling and Zero-Disruption Updates"
       heroGradient="from-indigo-50 via-white to-indigo-50"
-      heroImage="/PersonalVault.jpeg"
       
       overview="Set up automated rotation policies for your personal credentials. Schedule rotation for passwords, API keys, and tokens with smart timing that avoids disruption. Proactive reminders before expiration. One-click rotation with automatic vault update and auto-fill sync."
       

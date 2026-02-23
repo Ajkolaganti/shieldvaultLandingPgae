@@ -11,7 +11,6 @@ const SecretsIntegrationsPage = () => {
       heroTitle="Secrets Integrations"
       heroSubtitle="Seamlessly Inject Secrets into 50+ Platforms Including CI/CD, Kubernetes, Cloud, and Infrastructure"
       heroGradient="from-purple-50 via-white to-purple-50"
-      heroImage="/SecretManagement.jpeg"
       
       overview="Connect Shield Vault to 50+ platforms for seamless secret injection without hardcoding credentials. Native plugins for GitHub Actions, GitLab CI, Jenkins, Kubernetes, Terraform, Ansible, and all major cloud providers. Dynamic secret injection per run with audit trails and zero secrets in repos."
       

@@ -11,7 +11,6 @@ const PVSecretManagementPage = () => {
       heroTitle="Secret Management"
       heroSubtitle="Personal Secret Lifecycle Management with Versioning, Sharing, and Expiration Tracking"
       heroGradient="from-indigo-50 via-white to-indigo-50"
-      heroImage="/PersonalVault.jpeg"
       
       overview="Manage the complete lifecycle of your personal secrets: API keys, tokens, certificates, and sensitive data. Track creation, usage, rotation, and expiration for every secret. Secure sharing with team members. Version history with one-click rollback. Never lose track of a credential again."
       

@@ -11,7 +11,6 @@ const PolicyEnginePage = () => {
       heroTitle="Policy Engine"
       heroSubtitle="Granular Access Controls with Role-Based Permissions, Time-Based Access, and Automated Policy Enforcement"
       heroGradient="from-blue-50 via-white to-blue-50"
-      heroImage="/PAM.jpeg"
       
       overview="Implement granular access controls with role-based permissions (RBAC), attribute-based access control (ABAC), and zero standing privileges. The policy engine evaluates every access request against configurable rules, ensuring least privilege enforcement with complete automation and audit trails."
       

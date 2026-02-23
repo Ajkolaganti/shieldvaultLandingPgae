@@ -11,7 +11,6 @@ const ZeroTrustAccessPage = () => {
       heroTitle="Zero-Trust Access"
       heroSubtitle="Never Trust, Always Verify—Continuous Authentication and Authorization for Every Remote Session"
       heroGradient="from-green-50 via-white to-green-50"
-      heroImage="/RemoteAccess.jpeg"
       
       overview="Implement true zero-trust architecture for all remote access. Every session continuously verified: user identity, device health, network context, and behavioral patterns. No implicit trust—even authenticated users re-verified throughout their session. Microsegmentation ensures access to only authorized resources."
       

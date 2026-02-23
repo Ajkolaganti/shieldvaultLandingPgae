@@ -11,7 +11,6 @@ const MasterReconcilePage = () => {
       heroTitle="Master Reconciliation"
       heroSubtitle="Bulk Reconcile Operations with Password Version Tracking and Detailed Failure Diagnostics"
       heroGradient="from-blue-50 via-white to-blue-50"
-      heroImage="/PAM.jpeg"
       
       overview="Perform bulk reconciliation of privileged account credentials across your entire infrastructure. Verify password synchronization, detect version mismatches, and resolve credential drift with one-click operations. Password version tracking with detailed failure diagnostics ensures every account is in a known, secure state."
       

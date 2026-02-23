@@ -11,7 +11,6 @@ const SecureStoragePage = () => {
       heroTitle="Secure Storage"
       heroSubtitle="Military-Grade Encrypted Personal Vault for Passwords, Keys, Certificates, and Sensitive Documents"
       heroGradient="from-indigo-50 via-white to-indigo-50"
-      heroImage="/PersonalVault.jpeg"
       
       overview="Store and manage all your personal credentials, API keys, certificates, SSH keys, and sensitive documents in a military-grade encrypted vault. AES-256 encryption with zero-knowledge architecture—only you can access your data. Cross-platform access from browser, desktop, mobile, and CLI."
       

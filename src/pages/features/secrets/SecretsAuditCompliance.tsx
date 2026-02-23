@@ -11,7 +11,6 @@ const SecretsAuditCompliancePage = () => {
       heroTitle="Secrets Audit & Compliance"
       heroSubtitle="Automated Secret Lifecycle Compliance Reporting for SOC 2, HIPAA, PCI-DSS, and More"
       heroGradient="from-purple-50 via-white to-purple-50"
-      heroImage="/SecretManagement.jpeg"
       
       overview="Demonstrate secret lifecycle management compliance with automated evidence collection, continuous monitoring, and one-click report generation. Track secret creation, access, rotation, and retirement across all platforms with immutable audit trails that satisfy the most rigorous auditors."
       

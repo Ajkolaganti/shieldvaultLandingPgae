@@ -11,7 +11,6 @@ const PAMAIAutomationPage = () => {
       heroTitle="PAM AI Automation"
       heroSubtitle="Intelligent PAM Automation with AI-Powered Rules, Autonomous Agents, and Smart Policy Optimization"
       heroGradient="from-blue-50 via-white to-blue-50"
-      heroImage="/PAM.jpeg"
       
       overview="Eliminate 87% of manual PAM operations with AI-powered automation rules, autonomous security agents, and smart policy optimization. Automated session revocation, credential rotation, approval escalation, and anomaly lockdown execute 156+ rules monthly with 98.5% success rate."
       

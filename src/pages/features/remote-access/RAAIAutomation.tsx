@@ -11,7 +11,6 @@ const RAAIAutomationPage = () => {
       heroTitle="Remote Access AI Automation"
       heroSubtitle="AI-Powered Session Optimization, Threat Detection, and Automated Access Management"
       heroGradient="from-green-50 via-white to-green-50"
-      heroImage="/RemoteAccess.jpeg"
       
       overview="Automate 70% of remote access management with AI-powered rules and autonomous agents. Auto-grant JIT access, detect and terminate compromised sessions, enforce geofencing policies, and optimize session performance. AI processes 2,847+ concurrent sessions with real-time threat detection."
       

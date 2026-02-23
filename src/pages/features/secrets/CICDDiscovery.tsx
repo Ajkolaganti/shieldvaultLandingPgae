@@ -11,7 +11,6 @@ const CICDDiscoveryPage = () => {
       heroTitle="CI/CD Discovery"
       heroSubtitle="Discover and Secure Secrets Across GitHub, GitLab, Jenkins, and All CI/CD Pipelines"
       heroGradient="from-purple-50 via-white to-purple-50"
-      heroImage="/SecretManagement.jpeg"
       
       overview="Scan CI/CD pipelines, Git repositories, and build systems for exposed secrets, hardcoded credentials, and misconfigured secret variables. Supports GitHub Actions, GitLab CI/CD, Jenkins, CircleCI, Azure DevOps, and more. Detect secrets before they reach production with 97.2% accuracy."
       

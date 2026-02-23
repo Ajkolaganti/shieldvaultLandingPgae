@@ -11,7 +11,6 @@ const SecretsAIAutomationPage = () => {
       heroTitle="Secrets AI Automation"
       heroSubtitle="AI-Powered Secret Rotation, Leak Detection, and Lifecycle Automation"
       heroGradient="from-purple-50 via-white to-purple-50"
-      heroImage="/SecretManagement.jpeg"
       
       overview="Automate 80% of secret management tasks with AI-powered rules and autonomous agents. Auto-rotate expiring secrets, detect and revoke leaked credentials, enforce policies, and archive unused secrets—all without human intervention. Secret Rotation Agent handles 234 secrets with zero-downtime updates."
       

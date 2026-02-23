@@ -11,7 +11,6 @@ const PAMPage = () => {
       heroTitle="Privileged Access Management (PAM)"
       heroSubtitle="Zero-Trust Privileged Access with AI-Powered Security"
       heroGradient="from-blue-50 via-white to-blue-50"
-      heroImage="/PAM.jpeg"
       
       overview="Control, monitor, and secure privileged access to critical systems with real-time threat detection and automated policy enforcement. Reduce privileged access risks by 95% while cutting manual security tasks by 87%."
       
